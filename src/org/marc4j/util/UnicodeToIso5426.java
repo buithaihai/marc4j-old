@@ -413,10 +413,10 @@ public class UnicodeToIso5426 implements CharacterConverter {
             case 0x1EF9: return 0xC479;  // small   y with tilde
             case 0x2017: return 0xD920;  // double underline
             case 0x2018: return 0xA9;    // 2/9	left high single quotation mark
-            case 0x2018: return 0xB2;    // 3/2	left low single quotation mark
+//          case 0x2018: return 0xB2;    // 3/2	left low single quotation mark
             case 0x2019: return 0xB9;    // 3/9	right high single quotation mark
             case 0x201C: return 0xA2;    // 2/2	left low double quotation mark
-            case 0x201C: return 0xAA;    // 2/10	left high double quotation mark
+//          case 0x201C: return 0xAA;    // 2/10	left high double quotation mark
             case 0x201D: return 0xBA;    // 3/10	right high double quotation mark
             case 0x2020: return 0xA6;    // 2/6	single dagger
             case 0x2021: return 0xB6;    // 3/6	double dagger
