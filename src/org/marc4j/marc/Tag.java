@@ -21,7 +21,7 @@
 package org.marc4j.marc;
 
 /**
- * <p><code>Tag</code> defines behaviour to validate tags.  </p>
+ * <p><code>Tag</code> defines behaviour for a MARC tag.  </p>
  *
  * <p>A MARC tag is a three character string used to identify an
  * associated variable field. According to the MARC standard the tag may
@@ -49,8 +49,7 @@ public class Tag {
      * @param tag the tag name
      */
     public static boolean isValid(String tag) {
-	if (tag.length() != 3)
-	    return false;
+	Verifier.checkTag(tag);
 	return true;
     }
 
@@ -64,6 +63,7 @@ public class Tag {
      *                                (true) or not (false)
      */
     public static boolean isControlNumberField(String tag) {
+	Verifier.checkTag(tag);
         if (! tag.equals("001"))
             return false;
         return true;
@@ -80,6 +80,7 @@ public class Tag {
      *                                or a data field (false)
      */
     public static boolean isControlField(String tag) {
+	Verifier.checkTag(tag);
         if (tag.charAt(0) != ZERO)
             return false;
         if (tag.charAt(1) != ZERO)
@@ -97,6 +98,7 @@ public class Tag {
      *                                or a control field (false)
      */
     public static boolean isDataField(String tag) {
+	Verifier.checkTag(tag);
         if (! isControlField(tag))
             return true;
         return false;
