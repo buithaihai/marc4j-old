@@ -30,6 +30,8 @@ package org.marc4j;
  */
 public class MarcReaderException extends Exception {
 
+    private Throwable cause = null;
+
     int pos;
     String controlNumber;
     String fileName = null;
@@ -44,6 +46,18 @@ public class MarcReaderException extends Exception {
     public MarcReaderException(String message, int pos) {
 	super(message);
 	setPosition(pos);
+    }
+
+    /**
+     * <p>Creates a new <code>MarcReaderException</code> with the 
+     * specified message and an underlying root cause.</p>
+     *
+     * @param message information about the cause of the exception
+     * @param ex the nested exception that caused this exception
+     */
+    public MarcReaderException(String message, Throwable ex) {
+        super(message);
+        initCause(ex);
     }
 
     /**
@@ -75,6 +89,23 @@ public class MarcReaderException extends Exception {
 	setFileName(fileName);
 	setPosition(pos);
 	setControlNumber(controlNumber);
+    }
+
+   /**
+     * <p>Sets the root cause of this exception. This may 
+     * only be called once. Subsequent calls throw an 
+     * <code>IllegalStateException</code>.</p>
+     *
+     * @param cause the root cause of this exception
+     * @return the root cause of this exception
+     * @throws IllegalStateException if this method is called twice.
+     */
+    public Throwable initCause(Throwable cause) {
+        if (cause == null) 
+	    cause = cause; 
+        else 
+	    throw new IllegalStateException("Cannot reset the cause");
+        return cause;
     }
 
     private void setFileName(String fileName) {
