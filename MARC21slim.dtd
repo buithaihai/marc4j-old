@@ -34,7 +34,7 @@
 <!ELEMENT  collection   (record)*                                    >
 <!ATTLIST  collection
             %idEntity;
-            xmlns       CDATA                               #IMPLIED >
+            xmlns       CDATA #FIXED "http://www.loc.gov/MARC21/slim">
 
 
 <!--                    record                                     -->
