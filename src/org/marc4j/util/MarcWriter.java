@@ -146,12 +146,7 @@ public class MarcWriter
 
     public void subfield(char code, char[] data) {
 	if (convert)
-	    try {
-		datafield.add(new Subfield(code, 
-		    UnicodeToAnsel.convert(data)));
-	    } catch (IOException e) {
-		e.printStackTrace();
-	    }
+	    datafield.add(new Subfield(code, UnicodeToAnsel.convert(data)));
 	else
 	    datafield.add(new Subfield(code, data));
     }

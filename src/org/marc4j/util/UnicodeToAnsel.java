@@ -34,6 +34,8 @@ public class UnicodeToAnsel {
     /**
      * <p>Converts UCS/Unicode data to MARC-8.</p>
      *
+     * <p>A question mark (0x3F) is returned if there is no match.</p> 
+     *
      * @param data the UCS/Unicode data
      * @return {@link String} - the MARC-8 data
      */
@@ -43,6 +45,8 @@ public class UnicodeToAnsel {
 
     /**
      * <p>Converts UCS/Unicode data to MARC-8.</p>
+     *
+     * <p>A question mark (0x3F) is returned if there is no match.</p> 
      *
      * @param data the UCS/Unicode data
      * @return char[] - the MARC-8 data
@@ -436,7 +440,7 @@ public class UnicodeToAnsel {
         case 0xFE22: return 0xFA;    // double tilde left half
         case 0xFE23: return 0xFB;    // double tilde right half
 	default: 
-	    return 0x00F3;           // if no match, return question mark
+	    return 0x3F;             // if no match, return question mark
 	}
 
     }

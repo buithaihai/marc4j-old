@@ -150,7 +150,7 @@ public class MarcXmlFilter extends ExtendedFilter
 
 	try {
 	    // Convert the InputSource into a BufferedReader.
-	    Reader br = null;
+	    BufferedReader br = null;
 	    
 	    if (input.getCharacterStream() != null) {
 		br = new BufferedReader(input.getCharacterStream());
@@ -298,12 +298,8 @@ public class MarcXmlFilter extends ExtendedFilter
 		ch.ignorableWhitespace("\n      ".toCharArray(), 0, 7);
 	    ch.startElement(NS_URI,"subfield","subfield", atts);
 	    if (convert) {
-		try {
-		    char[] unicodeData = AnselToUnicode.convert(data);
-		    ch.characters(unicodeData, 0, unicodeData.length);
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
+		char[] unicodeData = AnselToUnicode.convert(data);
+		ch.characters(unicodeData, 0, unicodeData.length);
             } else {
                 ch.characters(data, 0, data.length);
             }
