@@ -46,6 +46,9 @@ import org.marc4j.util.AnselToUnicode;
  * consumes <code>MarcHandler</code> events and reports events to 
  * a SAX2 <code>ContentHandler</code>.  </p>
  *
+ * @deprecated This class has been replaced by 
+ * {@link org.marc4j.marcxml.MarcXmlReader}
+ * 
  * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
  * @version $Revision$
  *
