@@ -32,6 +32,7 @@ public class MarcReaderException extends Exception {
 
     int pos;
     String controlNumber;
+    String fileName = null;
 
     /**
      * <p>Creates an <code>Exception</code> indicating that an error
@@ -57,6 +58,36 @@ public class MarcReaderException extends Exception {
 	super(message);
 	setPosition(pos);
 	setControlNumber(controlNumber);
+    }
+
+    /**
+     * <p>Creates an <code>Exception</code> indicating that an error
+     * occured while parsing MARC records.</p>
+     *
+     * @param fileName the name of the input file
+     * @param message the reason why the exception is thrown
+     * @param pos position in the character stream where the exception is thrown
+     * @param controlNumber the control number (tag 001)
+     */
+    public MarcReaderException(String message, String fileName,
+			       int pos, String controlNumber) {
+	super(message);
+	setFileName(fileName);
+	setPosition(pos);
+	setControlNumber(controlNumber);
+    }
+
+    private void setFileName(String fileName) {
+	this.fileName = fileName;
+    }
+
+   /**
+     * <p>Returns the file name or null if there is no input file.</p>
+     * 
+     * @return <code>String</code> - the file name
+     */
+    public String getFileName() {
+	return fileName;
     }
 
     private void setPosition(int pos) {

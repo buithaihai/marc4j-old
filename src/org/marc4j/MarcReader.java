@@ -60,6 +60,7 @@ public class MarcReader {
     int recordCounter = 0;
     String controlNumber = null;
     String tag = null;
+    String fileName = null;
 
     /** The MarcHandler object. */
     private MarcHandler mh;
@@ -88,11 +89,12 @@ public class MarcReader {
     /**
      * <p>Sends a file to the MARC parser.</p>
      *
-     * @param filename the filename
+     * @param fileName the filename
      */
-    public void parse(String file) 
+    public void parse(String fileName) 
 	throws IOException {
-	parse(new BufferedReader(new FileReader(file)));
+	setFileName(fileName);
+	parse(new BufferedReader(new FileReader(fileName)));
      }
 
     /**
@@ -262,19 +264,22 @@ public class MarcReader {
 
     private void reportWarning(String message) {
 	if (eh != null) 
-	    eh.warning(new MarcReaderException(message, getPosition(), 
+	    eh.warning(new MarcReaderException(message, getFileName(), 
+					       getPosition(), 
 					       getControlNumber()));
     }
 
     private void reportError(String message) {
 	if (eh != null) 
-	    eh.error(new MarcReaderException(message, getPosition(),
+	    eh.error(new MarcReaderException(message, getFileName(),
+					     getPosition(),
 					     getControlNumber()));
     }
 
     private void reportFatalError(String message) {
 	if (eh != null) 
-	    eh.fatalError(new MarcReaderException(message, getPosition(),
+	    eh.fatalError(new MarcReaderException(message, getFileName(), 
+						  getPosition(),
 						  getControlNumber()));
     }
 
@@ -286,12 +291,20 @@ public class MarcReader {
 	this.controlNumber = new String(controlNumber);
     }
 
+    private void setFileName(String fileName) {
+	this.fileName = fileName;
+    }
+
     private String getControlNumber() {
 	return controlNumber;
     }
 
     private int getPosition() {
 	return fileCounter + recordCounter;
+    }
+
+    private String getFileName() {
+	return fileName;
     }
 
     private char[] trimFT(char[] field) {
