@@ -36,6 +36,9 @@ import org.marc4j.MarcReader;
 import org.marc4j.marc.MarcConstants;
 import org.marc4j.marc.Leader;
 import org.marc4j.marc.Tag;
+import org.marc4j.util.CharacterConverter;
+import org.marc4j.util.CharacterConverterLoader;
+import org.marc4j.util.CharacterConverterLoaderException;
 import org.marc4j.util.AnselToUnicode;
 
 /**
@@ -53,9 +56,6 @@ import org.marc4j.util.AnselToUnicode;
 public class MarcXmlFilter extends ExtendedFilter 
     implements MarcHandler {
 
-    /** Converts ansel to unicode */
-    private boolean convert = false;
-
     /** Enables pretty printing */
     private boolean prettyPrinting = true;
 
@@ -70,6 +70,10 @@ public class MarcXmlFilter extends ExtendedFilter
     /** MARC4J ansel to unicode conversion */
     private static final String ANSEL_TO_UNICODE = 
 	"http://marc4j.org/features/ansel-to-unicode";
+
+    /** MARC4J character conversion */
+    private static final String CHARACTER_CONVERTER = 
+	"http://marc4j.org/features/charconv";
 
     /** MARC4J pretty printing */
     private static final String PRETTY_PRINTING = 
@@ -103,6 +107,8 @@ public class MarcXmlFilter extends ExtendedFilter
     /** {@link ErrorHandler} object */
     private ErrorHandler eh;
 
+    private CharacterConverter charconv = null;
+
     /**
      * <p>Sets the object for the given property.</p>
      *
@@ -130,7 +136,9 @@ public class MarcXmlFilter extends ExtendedFilter
     public void setFeature(String name, boolean value)
 	throws SAXNotRecognizedException, SAXNotSupportedException {
 	if (ANSEL_TO_UNICODE.equals(name))
-	    this.convert = value;
+	    setCharacterConverter(true);
+	else if (CHARACTER_CONVERTER.equals(name))
+	    setCharacterConverter(true);
 	else if (PRETTY_PRINTING.equals(name))
 	    this.prettyPrinting = value;
 	else
@@ -297,8 +305,8 @@ public class MarcXmlFilter extends ExtendedFilter
 	    if (prettyPrinting) 
 		ch.ignorableWhitespace("\n      ".toCharArray(), 0, 7);
 	    ch.startElement(NS_URI,"subfield","subfield", atts);
-	    if (convert) {
-		char[] unicodeData = AnselToUnicode.convert(data);
+	    if (charconv != null) {
+		char[] unicodeData = charconv.convert(data);
 		ch.characters(unicodeData, 0, unicodeData.length);
             } else {
                 ch.characters(data, 0, data.length);
@@ -372,6 +380,18 @@ public class MarcXmlFilter extends ExtendedFilter
         ch.startElement(uri, localName, qName, atts);
         ch.characters(content, 0, content.length);
         ch.endElement(uri, localName, qName);
+    }
+
+    private void setCharacterConverter(boolean convert) {
+	if (convert) {
+	    try {
+		charconv = (CharacterConverter)CharacterConverterLoader
+		    .createCharacterConverter("org.marc4j.charconv", 
+					      "org.marc4j.util.AnselToUnicode");
+	    } catch (CharacterConverterLoaderException e) {
+		e.printStackTrace();
+	    }
+	}
     }
 
 }
