@@ -147,7 +147,7 @@ public class MarcReader {
 	    } catch (MarcException e) { 
 		if (eh != null) 
 		    reportFatalError("Unable to parse leader");
-		System.exit(0);
+		return;
 	    } 
 	    int baseAddress = leader.getBaseAddressOfData();
 
