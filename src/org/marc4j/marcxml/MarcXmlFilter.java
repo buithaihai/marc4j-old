@@ -137,7 +137,7 @@ public class MarcXmlFilter extends ExtendedFilter
 	throws SAXNotRecognizedException, SAXNotSupportedException {
 	if (ANSEL_TO_UNICODE.equals(name))
 	    this.convert = value;
-	if (PRETTY_PRINTING.equals(name))
+	else if (PRETTY_PRINTING.equals(name))
 	    this.prettyPrinting = value;
 	else
 	    super.setFeature(name, value);

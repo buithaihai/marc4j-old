@@ -44,7 +44,7 @@ import org.marc4j.MarcReader;
 public class MarcSource implements Source {
 
     public static final String FEATURE =
-	"http://org.marc4j.marcxml.MarcSource/feature";
+    	"http://org.marc4j.marcxml.MarcSource/feature";
 
     private String publicId = null;
     private String systemId = null;
