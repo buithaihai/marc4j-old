@@ -40,12 +40,13 @@ public class UnicodeToAnsel implements CharacterConverter {
     static final int ASCII = 0x42;
 
     public UnicodeToAnsel() {
-	try {
-	    rct = new ReverseCodeTable(new java.net.URI("http://www.loc.gov/marc/specifications/codetables.xml"));
-	} catch (java.net.URISyntaxException exp)  {
-	    System.err.println("Unable to load character code table");
-	    System.exit(1);
-	}
+	//try {
+	//  rct = new ReverseCodeTable(new java.net.URI("http://www.loc.gov/marc/specifications/codetables.xml"));
+	//} catch (java.net.URISyntaxException exp)  {
+	//  System.err.println("Unable to load character code table");
+	//  System.exit(1);
+	//}
+	rct = new ReverseCodeTable(getClass().getResourceAsStream("resources/codetables.xml"));
     }
 
     /**
