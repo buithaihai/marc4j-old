@@ -404,7 +404,7 @@ public class AnselToUnicode {
 	        return 0x00E6;
 	    // latin small letter oe
 	    case 0x00B6 :
-	        return 0x009C;
+	        return 0x0153;
 	    // modifier letter double prime
 	    case 0x00B7 :
 	        return 0x02BA;
