@@ -72,7 +72,7 @@ public class MarcReader {
     /**
      * <p>Registers the <code>MarcHandler</code> implementation.</p>
      *
-     * @param marcHandler the {@link MarcHandler} implementation
+     * @param mh the {@link MarcHandler} implementation
      */
     public void setMarcHandler(MarcHandler mh) {
 	this.mh = mh;
@@ -81,7 +81,7 @@ public class MarcReader {
      /**
      * <p>Registers the <code>ErrorHandler</code> implementation.</p>
      *
-     * @param errorHandler the {@link ErrorHandler} implementation
+     * @param eh the {@link ErrorHandler} implementation
      */
     public void setErrorHandler(ErrorHandler eh) {
 	this.eh = eh;
