@@ -80,8 +80,9 @@ public final class CharacterConverterLoader {
 	    } else
 		return null;
 
-	} catch (Exception e) {
-	    throw new CharacterConverterLoaderException(e.getMessage());
+	} catch (Throwable e) {
+	    throw new CharacterConverterLoaderException
+		("Unable to load converter class", e);
 	}
     }
 }
