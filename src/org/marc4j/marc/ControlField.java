@@ -105,7 +105,8 @@ public class ControlField extends VariableField {
      * @param data the control field data
      */
     public void setData(char[] data) {
-	    this.data = data;
+	Verifier.checkDataElement(data);
+	this.data = data;
     }
 
     /**
@@ -114,7 +115,7 @@ public class ControlField extends VariableField {
      * @param data the control field data
      */
     public void setData(String data) {
-	    this.data = data.toCharArray();
+	setData(data.toCharArray());
     }
 
     /**

@@ -122,6 +122,7 @@ public class DataField extends VariableField {
      * @throws IllegalIndicatorException when the indicator value is invalid
      */
     public void setIndicator1(char ind1) {
+	Verifier.checkDataElement(ind1);
         this.ind1 = ind1;
     }
 
@@ -132,6 +133,7 @@ public class DataField extends VariableField {
      * @throws IllegalIndicatorException when the indicator value is invalid
      */
     public void setIndicator2(char ind2) {
+	Verifier.checkDataElement(ind2);
         this.ind2 = ind2;
     }
 

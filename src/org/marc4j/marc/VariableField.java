@@ -36,7 +36,7 @@ package org.marc4j.marc;
  * @see ControlField
  * @see DataField
  */
-public abstract class VariableField {
+abstract class VariableField {
 
     /** The field terminator */
     public static final char FT = MarcConstants.FT;
