@@ -8,7 +8,7 @@
     <property name="build" value="build"/>
     <property name="dist" value="dist"/>
     <property name="apidoc" value="${dist}/doc/apidoc"/>
-    <property name="version" value="b6b"/>
+    <property name="version" value="b6c"/>
     <property name="name" value="marc4j"/>
   </target>
 
