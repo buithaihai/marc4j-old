@@ -304,8 +304,12 @@ public class MarcXmlFilter extends ExtendedFilter
 		ch.ignorableWhitespace("\n      ".toCharArray(), 0, 7);
 	    ch.startElement(NS_URI,"subfield","subfield", atts);
 	    if (convert) {
-                char[] unicodeData = AnselToUnicode.convert(data);
-                ch.characters(unicodeData, 0, unicodeData.length);
+		try {
+		    char[] unicodeData = AnselToUnicode.convert(data);
+		    ch.characters(unicodeData, 0, unicodeData.length);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
             } else {
                 ch.characters(data, 0, data.length);
             }

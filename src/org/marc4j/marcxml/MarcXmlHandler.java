@@ -36,6 +36,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import org.marc4j.MarcHandler;
 import org.marc4j.marc.Leader;
 import org.marc4j.marc.MarcException;
+import org.marc4j.util.UnicodeToAnsel;
 
 /**
  * <p><code>MarcXmlHandler</code> is a SAX2 <code>ContentHandler</code>
@@ -141,8 +142,9 @@ public class MarcXmlHandler extends DefaultHandler {
 		mh.endDataField(tag);
 	    tag = null;
 	} else if (name.equals("subfield")) {
+	    char[] ch = data.toString().toCharArray();
 	    if (mh != null)
-		mh.subfield(code.charAt(0), data.toString().toCharArray());
+		mh.subfield(code.charAt(0), ch);
 	    code = null;
 	}
 	data = null;
