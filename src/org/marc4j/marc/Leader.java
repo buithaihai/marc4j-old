@@ -289,6 +289,8 @@ public class Leader {
     /**
      * <p>Creates a leader object from a string object.</p>
      *
+     * <p>Indicator coutn and subfield code length are defaulted to 2 
+     * if they are not integer values.</p>
      * @param ldr the leader
      */
     public void unmarshal(String ldr) throws MarcException {
@@ -303,8 +305,16 @@ public class Leader {
 	    setTypeOfRecord(ldr.charAt(6));
 	    setImplDefined1(ldr.substring(7, 9).toCharArray());
 	    setCharCodingScheme(ldr.charAt(9));
-	    setIndicatorCount(Integer.parseInt(String.valueOf(ldr.charAt(10))));
-	    setSubfieldCodeLength(Integer.parseInt(String.valueOf(ldr.charAt(11))));
+	    s = String.valueOf(ldr.charAt(10));
+	    if (isInteger(s))
+		setIndicatorCount(Integer.parseInt(s));
+	    else
+		setIndicatorCount('2');
+	    s = String.valueOf(ldr.charAt(10));
+	    if (isInteger(s))
+		setSubfieldCodeLength(Integer.parseInt(s));
+	    else
+		setSubfieldCodeLength('2');
 	    s = ldr.substring(12, 17);
 	    if (isInteger(s))
 		setBaseAddressOfData(Integer.parseInt(s));
