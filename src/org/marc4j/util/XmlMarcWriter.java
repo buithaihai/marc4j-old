@@ -29,7 +29,7 @@ package org.marc4j.util;
 import java.io.Writer;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
 import org.xml.sax.XMLReader;
@@ -90,6 +90,7 @@ public class XmlMarcWriter {
         String input = null;
 	String output = null;
 	String stylesheet = null;
+	String encoding = null;
         String schemaSource = null;
         boolean dtdValidate = false;
         boolean xsdValidate = false;
@@ -110,6 +111,11 @@ public class XmlMarcWriter {
                     usage();
                 }
                 output = args[++i];
+            } else if (args[i].equals("-encoding")) {
+                if (i == args.length - 1) {
+                    usage();
+                }
+                encoding = args[++i];
             } else if (args[i].equals("-xsl")) {
                 if (i == args.length - 1) {
                     usage();
@@ -135,9 +141,15 @@ public class XmlMarcWriter {
 	try {
 	    Writer writer;
 	    if (output == null) {
-		writer = new BufferedWriter(new OutputStreamWriter(System.out));
+		if (encoding != null)
+		    writer = new BufferedWriter(new OutputStreamWriter(System.out, encoding));
+		else
+		    writer = new BufferedWriter(new OutputStreamWriter(System.out));
 	    } else {
-		writer = new BufferedWriter(new FileWriter(output));
+		if (encoding != null)
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output), encoding));
+		else
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output)));
 	    }
 	    MarcWriter handler = new MarcWriter(writer);
 
@@ -184,6 +196,7 @@ public class XmlMarcWriter {
         System.err.println("       -xsdss <file> = W3C XML Schema validation using schema source <file>");
         System.err.println("       -xsl <file> = Preprocess XML using XSLT stylesheet <file>");
         System.err.println("       -out <file> = Output using <file>");
+        System.err.println("       -encoding <value> = Output using encoding <file>");
         System.err.println("       -usage or -help = this message");
         System.exit(1);
     }

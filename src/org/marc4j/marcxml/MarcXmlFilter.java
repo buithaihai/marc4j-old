@@ -157,14 +157,14 @@ public class MarcXmlFilter extends ExtendedFilter
 	try {
 	    // Convert the InputSource into a BufferedReader.
 	    Reader br = null;
+	    
 	    if (input.getCharacterStream() != null) {
-		br = new BufferedReader(input.getCharacterStream(  ));
+		br = new BufferedReader(input.getCharacterStream());
 	    } else if (input.getByteStream() != null) {
-		br = new BufferedReader(new InputStreamReader(
-	            input.getByteStream()));
+		br = new BufferedReader(new InputStreamReader(input.getByteStream(), input.getEncoding()));
 	    } else if (input.getSystemId() != null) {
 		java.net.URL url = new URL(input.getSystemId());
-		br = new BufferedReader(new InputStreamReader(url.openStream()));
+		br = new BufferedReader(new InputStreamReader(url.openStream(), input.getEncoding()));
 	    } else {
 		throw new SAXException("Invalid InputSource object");
 	    }

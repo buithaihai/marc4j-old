@@ -127,12 +127,20 @@ public class MarcXmlWriter {
 	    if (convert)
 		producer.setFeature("http://marc4j.org/features/ansel-to-unicode", true);
 	    InputSource in = new InputSource(new FileReader(input));
+	    if (convert)
+		in.setEncoding("UTF8");
 	    Source source = new SAXSource(producer, in);
 	    Writer writer;
 	    if (output == null) {
-		writer = new BufferedWriter(new OutputStreamWriter(System.out));
+		if (convert)
+		    writer = new BufferedWriter(new OutputStreamWriter(System.out, "UTF8"));
+		else
+		    writer = new BufferedWriter(new OutputStreamWriter(System.out));
 	    } else {
-		writer = new BufferedWriter(new FileWriter(output));
+		if (convert)
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output), "UTF8"));
+		else
+		    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output)));
 	    }
 	    Result result = new StreamResult(writer);
 	    Converter converter = new Converter();
