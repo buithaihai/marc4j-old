@@ -128,7 +128,7 @@ public class MarcXmlWriter {
 	    BufferedReader reader;
 	    if (convert)
 		reader = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(input)));
+                    new FileInputStream(input), "ISO8859_1"));
 	    else
 		reader = new BufferedReader(new InputStreamReader(
                     new FileInputStream(input), "UTF8"));
