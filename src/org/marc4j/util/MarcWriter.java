@@ -100,7 +100,7 @@ public class MarcWriter
     }
 
     /**
-     * @deprecated  As of MARC4J beta 7 replaced by {@link #setCharacterConverter(boolean convert)}
+     * @deprecated As of MARC4J beta 7 replaced by {@link #setCharacterConverter(CharacterConverter charconv)}
      */
     public void setUnicodeToAnsel(boolean convert) {
 	if (convert)
@@ -108,22 +108,14 @@ public class MarcWriter
     }
 
     /**
-     * <p>Sets the character conversion option.</p>
-     * <p>The loader will first look for a <code>org.marc4j.charconv</code> property.
-     * The default property is {@link UnicodeToAnsel}.</p>
+     * <p>Sets the character conversion table.     </p>
      *
-     * @param convert if true sets the character converter
+     * <p>A character converter is an instance of {@link CharacterConverter}.</p>
+     *
+     * @param charconv the character converter
      */
-    public void setCharacterConverter(boolean convert) {
-	if (convert) {
-	    try {
-		charconv = (CharacterConverter)CharacterConverterLoader
-		    .createCharacterConverter("org.marc4j.charconv", 
-					      "org.marc4j.util.UnicodeToAnsel");
-	    } catch (CharacterConverterLoaderException e) {
-		e.printStackTrace();
-	    }
-	}
+    public void setCharacterConverter(CharacterConverter charconv) {
+	this.charconv = charconv;
     }
 
     /**
