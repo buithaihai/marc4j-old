@@ -26,18 +26,19 @@
 package org.marc4j.marcxml;
 
 /**
- * <p>This class defines behaviour for a document type declaration.  </p>
+ * <p><code>DoctypeDecl</code> defines behaviour for a document type 
+ * declaration.  </p>
  *
  * @author Bas Peters
  */
-public class DocType {
+public class DoctypeDecl {
 
     String name;
     String publicId;
     String systemId;
 
     /** Default constructor */
-    public DocType() {}
+    public DoctypeDecl() {}
 
     /**
      * <p>Creates a new DocType instance</p>
@@ -46,7 +47,7 @@ public class DocType {
      * @param publicId the public identifier
      * @param systemId the system identifier
      */
-    public DocType(String name, String publicId, String systemId) {
+    public DoctypeDecl(String name, String publicId, String systemId) {
 	setName(name);
 	setPublicId(publicId);
 	setSystemId(systemId);
