@@ -309,12 +309,12 @@ public class Leader {
 	    if (isInteger(s))
 		setIndicatorCount(Integer.parseInt(s));
 	    else
-		setIndicatorCount('2');
+		setIndicatorCount(2);
 	    s = String.valueOf(ldr.charAt(10));
 	    if (isInteger(s))
 		setSubfieldCodeLength(Integer.parseInt(s));
 	    else
-		setSubfieldCodeLength('2');
+		setSubfieldCodeLength(2);
 	    s = ldr.substring(12, 17);
 	    if (isInteger(s))
 		setBaseAddressOfData(Integer.parseInt(s));
