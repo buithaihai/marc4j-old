@@ -1,4 +1,4 @@
-// $header$
+// $Header$
 /**
  * Copyright (C) 2002 Bas Peters (mail@bpeters.com)
  *
@@ -38,7 +38,7 @@ import org.marc4j.MarcHandler;
  * to write record objects to tape format (ISO 2709).</p>
  *
  * @author Bas Peters
- * @version $revision$
+ * @version $Revision$
  * @see MarcHandler
  */
 public class MarcWriter 
