@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -36,7 +37,9 @@ import org.marc4j.MarcReader;
  * <p><code>MarcSource</code> is a MARC input source for 
  * non-MARCXML conversions.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class MarcSource implements Source {
 

@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -29,7 +30,9 @@ package org.marc4j.marc;
  * <p><code>MarcException</code> is thrown when an error occurs
  * while processing a record object.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class MarcException extends Exception {
 

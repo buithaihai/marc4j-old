@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters (mail@bpeters.com)
  *
@@ -43,7 +44,8 @@ package org.marc4j.util;
  * If possible UCS/Unicode non-spacing characters are together with their
  * base character converted to UCS/Unicode combining characters.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
  *
  */
 public class AnselToUnicode {

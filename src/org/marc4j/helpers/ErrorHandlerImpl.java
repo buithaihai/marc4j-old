@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -32,7 +33,9 @@ import org.marc4j.MarcReaderException;
  * <p>Implements the <code>ErrorHandler</code> interface to report about
  * warnings and errors that occur during the parsing of a MARC record.  </p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see ErrorHandler
  */
 public class ErrorHandlerImpl implements ErrorHandler {

@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -39,7 +40,9 @@ package org.marc4j.marc;
  * <p>This structure is returned by the {@link #marshal()}
  * method.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class ControlField extends VariableField {
 

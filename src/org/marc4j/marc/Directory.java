@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -45,7 +46,9 @@ import java.text.DecimalFormat;
  * or length of field of fewer than five digits is right justified and
  * unused positions contain zero's.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class Directory {
 

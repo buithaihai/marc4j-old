@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters (mail@bpeters.com)
  *
@@ -28,7 +29,9 @@ package org.marc4j.util;
 /**
  * <p>Defines a datatype for ASCII characters.  </p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class Ascii {
 

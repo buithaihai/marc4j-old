@@ -37,8 +37,9 @@ import org.marc4j.MarcHandler;
  * <p>Implements the <code>MarcHandler</code> interface
  * to write record objects to tape format (ISO 2709).</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
  * @version $Revision$
+ *
  * @see MarcHandler
  */
 public class MarcWriter 

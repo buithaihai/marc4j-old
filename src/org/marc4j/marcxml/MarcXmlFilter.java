@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -48,9 +49,8 @@ import org.marc4j.util.AnselToUnicode;
  * consumes <code>MarcHandler</code> events and reports events to 
  * a SAX2 <code>ContentHandler</code>.  </p>
  *
- * <p></p>
- *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
  *
  * @see ExtendedFilter
  * @see MarcHandler

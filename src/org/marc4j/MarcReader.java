@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -41,7 +42,9 @@ import org.marc4j.marc.MarcException;
  * <p>Parses MARC records and reports events to the <code>MarcHandler</code>
  * and optionally the <code>ErrorHandler</code>.  </p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see MarcHandler
  * @see ErrorHandler
  */

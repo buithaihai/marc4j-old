@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -31,7 +32,9 @@ import org.marc4j.MarcHandler;
 /**
  * <p>Collects the result of a MARC conversion.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see MarcHandler
  */
 public class MarcResult implements Result {

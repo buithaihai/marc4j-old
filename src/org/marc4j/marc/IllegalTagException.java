@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -29,7 +30,9 @@ package org.marc4j.marc;
  * <p><code>IllegalTagException</code> is thrown when a tag is supplied
  * that is invalid.  </p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  */
 public class IllegalTagException extends IllegalArgumentException {
 

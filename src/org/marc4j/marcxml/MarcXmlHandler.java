@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -41,7 +42,9 @@ import org.marc4j.marc.MarcException;
  * <p><code>MarcXmlHandler</code> is a SAX2 <code>ContentHandler</code>
  * that reports events to the <code>MarcHandler</code> interface.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see MarcHandler
  * @see DefaultHandler
  */

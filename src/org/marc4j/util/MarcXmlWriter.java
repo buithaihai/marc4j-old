@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -61,7 +62,9 @@ import org.marc4j.marcxml.Converter;
  *
  * <p><b>Note:</b> this class requires a JAXP compliant XSLT processor.</p> 
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see MarcXmlFilter
  * @see Converter
  */

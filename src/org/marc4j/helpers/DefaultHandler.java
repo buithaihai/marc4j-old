@@ -1,3 +1,4 @@
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters
  *
@@ -38,7 +39,9 @@ import org.marc4j.marc.Leader;
  * <p>Application writers can extend this class when they need to
  * implement only part of an interface.</p>
  *
- * @author Bas Peters
+ * @author <a href="mailto:mail@bpeters.com">Bas Peters</a> 
+ * @version $Revision$
+ *
  * @see MarcHandler
  * @see ErrorHandler
  */
