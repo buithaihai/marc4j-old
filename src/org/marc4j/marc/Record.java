@@ -67,7 +67,7 @@ public class Record {
     /**
      * <p>Default constructor.</p>
      */
-    public void Record() {}
+    public Record() {}
 
     /**
      * <p>Creates a new instance for a record and registers the
@@ -75,7 +75,7 @@ public class Record {
      *
      * @param leader the {@link Leader} object
      */
-    public void Record(Leader leader) {
+    public Record(Leader leader) {
         add(leader);
     }
 
