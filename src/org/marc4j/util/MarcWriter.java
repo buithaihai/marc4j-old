@@ -1,4 +1,4 @@
-// $Header$
+// $Id$
 /**
  * Copyright (C) 2002 Bas Peters (mail@bpeters.com)
  *
