@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="marc4j" default="jar" basedir=".">
 
+  <!-- $Id$ -->
   <target name="init">
     <tstamp/>
     <property name="src" value="src"/>
