@@ -264,8 +264,10 @@ class Driver {
 	    factory.setNamespaceAware(true);
 	    factory.setValidating(true);
 	    SAXParser saxParser = factory.newSAXParser();
-            saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");
-            saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", new File("MARC21slim.xsd"));
+            saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage", 
+                                  "http://www.w3.org/2001/XMLSchema");
+            saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", 
+                                  new File("MARC21slim.xsd"));
 	    XMLReader xmlReader = saxParser.getXMLReader();
 	    xmlReader.setErrorHandler(new SaxErrorHandler());
 	    InputSource in = new InputSource(new File(input).toURL().toString());
