@@ -20,6 +20,8 @@
  */
 package org.marc4j.marc;
 
+import java.io.Serializable;
+
 /**
  * <p><code>VariableField</code> defines general behaviour for
  * variable fields.  </p>
@@ -36,7 +38,7 @@ package org.marc4j.marc;
  * @see ControlField
  * @see DataField
  */
-abstract class VariableField {
+public abstract class VariableField implements Serializable {
 
     /** The field terminator */
     public static final char FT = MarcConstants.FT;

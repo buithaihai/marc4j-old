@@ -22,6 +22,7 @@ package org.marc4j.marc;
 
 import java.text.DecimalFormat;
 import java.io.ByteArrayInputStream;
+import java.io.Serializable;
 
 /**
  * <p><code>Leader</code> defines behaviour for the record label
@@ -45,7 +46,7 @@ import java.io.ByteArrayInputStream;
  * @version $Revision$
  *
  */
-public class Leader {
+public class Leader implements Serializable {
 
     /** The logical record length. */
     private int recordLength;

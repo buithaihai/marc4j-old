@@ -20,6 +20,7 @@
  */
 package org.marc4j.marc;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,7 +46,7 @@ import java.util.Iterator;
  * @version $Revision$
  *
  */
-public class DataField extends VariableField {
+public class DataField extends VariableField implements Serializable {
 
     /** The first indicator value. */
     private char ind1;

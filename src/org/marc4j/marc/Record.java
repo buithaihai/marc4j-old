@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
+import java.io.Serializable;
 
 /**
  * <p><code>Record</code> defines behaviour for a record.  </p>
@@ -46,7 +47,7 @@ import java.util.Collections;
  * @version $Revision$
  *
  */
-public class Record {
+public class Record implements Serializable {
 
     /** The record terminator. */
     private static final char RT = MarcConstants.RT;

@@ -20,6 +20,7 @@
  */
 package org.marc4j.marc;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
 /**
@@ -44,7 +45,7 @@ import java.text.DecimalFormat;
  * @version $Revision$
  *
  */
-public class Directory {
+public class Directory implements Serializable {
 
     private static final char FT = MarcConstants.FT;
 

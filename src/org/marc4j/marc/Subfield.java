@@ -20,6 +20,8 @@
  */
 package org.marc4j.marc;
 
+import java.io.Serializable;
+
 /**
  * <p><code>Subfield</code> defines behaviour for a subfield (a data
  * element within a data field).  </p>
@@ -37,7 +39,7 @@ package org.marc4j.marc;
  * @version $Revision$
  *
  */
-public class Subfield {
+public class Subfield implements Serializable {
 
     private static final char US = MarcConstants.US;
 

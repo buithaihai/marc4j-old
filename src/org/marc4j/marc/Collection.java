@@ -22,6 +22,7 @@ package org.marc4j.marc;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +35,7 @@ import java.util.Iterator;
  * @version $Revision$
  *
  */
-public class Collection {
+public class Collection implements Serializable {
 
     private List list;
 

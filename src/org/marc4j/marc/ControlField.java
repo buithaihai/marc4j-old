@@ -20,6 +20,8 @@
  */
 package org.marc4j.marc;
 
+import java.io.Serializable;
+
 /**
  * <p><code>ControlField</code> defines behaviour for a control
  * field (tag 001-009).  </p>
@@ -38,7 +40,7 @@ package org.marc4j.marc;
  * @version $Revision$
  *
  */
-public class ControlField extends VariableField {
+public class ControlField extends VariableField implements Serializable {
 
     /** The MARC data element. */
     private char[] data;
