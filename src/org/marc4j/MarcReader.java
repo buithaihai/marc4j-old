@@ -96,29 +96,24 @@ public class MarcReader {
      }
 
     /**
-     * <p>Sends an input stream reader to the MARC parser.</p>
+     * <p>Sends an input stream to the MARC parser.</p>
      *
-     * @param input the input stream reader
+     * @param input the input stream
      */
     public void parse(InputStream input) 
 	throws IOException {
-	parse(new InputStreamReader(input));
+	parse(new BufferedReader(new InputStreamReader(input)));
     }
 
-    //    /**
-    //* <p>Sends an input stream reader to the MARC parser.</p>
-    //*
-    //* @param input the input stream reader
-    //*/
-    //public void parse(InputStreamReader input) 
-    //	throws IOException {
-    //	parse(input);
-    //}
-
-    //    public void parse(BufferedReader input) 
-    //	throws IOException {
-    //	parse((Reader)input);
-    //    }
+   /**
+    * <p>Sends an input stream reader to the MARC parser.</p>
+    *
+    * @param input the input stream reader
+    */
+    public void parse(InputStreamReader input) 
+    	throws IOException {
+    	parse(new BufferedReader(input));
+    }
 
     public void parse(Reader input) 
 	throws IOException {
