@@ -120,10 +120,7 @@ public class MarcReader {
     public void parse(Reader input) 
 	throws IOException {
 	int ldrLength = 24;
-
-	if (! input.ready())
-	    reportFatalError("Unable to read input");
-
+        
 	if (mh != null) 
 	    mh.startCollection();
 
@@ -131,7 +128,13 @@ public class MarcReader {
 	    Leader leader = null;
 	    char[] ldr = new char[24];
 
-	    if (input.read(ldr) == -1) break;
+            int charsRead = input.read(ldr);
+            
+            if (charsRead == -1)
+                break;
+            
+            while (charsRead != -1 && charsRead != ldr.length)
+                charsRead += input.read(ldr, charsRead, ldr.length - charsRead);
 
 	    try {
 	        leader = new Leader(new String(ldr));
@@ -155,12 +158,22 @@ public class MarcReader {
 		reportError("Invalid directory length");
      
 	    for (int i = 0; i < dirEntries; i++) {
+                
 		char[] d = new char[3];
+                charsRead = input.read(d);
+                while (charsRead != -1 && charsRead != d.length)
+                    charsRead += input.read(d, charsRead, d.length - charsRead);
+                
 		char[] e = new char[4];
+                charsRead = input.read(e);
+                while (charsRead != -1 && charsRead != e.length)
+                    charsRead += input.read(e, charsRead, e.length - charsRead);
+                
 		char[] f = new char[5];
-		input.read(d);
-		input.read(e);
-		input.read(f);
+                charsRead = input.read(f);
+                while (charsRead != -1 && charsRead != f.length)
+                    charsRead += input.read(f, charsRead, f.length - charsRead);
+                
 		recordCounter += 12;
 		tag[i] = new String(d);
 		try {
@@ -177,7 +190,9 @@ public class MarcReader {
 
 	    for (int i = 0; i < dirEntries; i++) {
 		char field[] = new char[length[i]];
-		input.read(field);
+                charsRead = input.read(field);
+                while (charsRead != -1 && charsRead != field.length)
+                    charsRead += input.read(field, charsRead, field.length - charsRead);
 
 		if (field[field.length -1] != FT && eh != null)
 		    reportError("Field not terminated");
