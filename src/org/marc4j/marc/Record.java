@@ -368,7 +368,7 @@ public class Record {
                 throw new IllegalAddException(
                 obj.getClass().getName(),
                 "a collection of variable fields can only contain " +
-                "Controlfield or DataField objects.");
+                "ControlField or DataField objects.");
             }
         }
     }
