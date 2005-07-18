@@ -137,14 +137,14 @@ public class DataFieldImpl extends VariableFieldImpl implements DataField {
   }
 
   public List getSubfields(char code) {
-    List subfields = new ArrayList();
+    List retSubfields = new ArrayList();
     Iterator i = subfields.iterator();
     while (i.hasNext()) {
       Subfield sf = (Subfield) i.next();
       if (sf.getCode() == code)
-        subfields.add(sf);
+        retSubfields.add(sf);
     }
-    return subfields;
+    return retSubfields;
   }
 
   public Subfield getSubfield(char code) {
