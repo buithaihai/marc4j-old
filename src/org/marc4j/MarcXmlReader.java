@@ -107,7 +107,7 @@ public class MarcXmlReader implements MarcReader {
    * 
    * @param input
    *          the input stream
-   * @param stylesheet
+   * @param stylesheetUrl
    *          the stylesheet location
    */
   public MarcXmlReader(InputStream input, String stylesheetUrl) {
