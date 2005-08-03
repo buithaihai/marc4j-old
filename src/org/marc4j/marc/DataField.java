@@ -30,75 +30,87 @@ import java.util.List;
  */
 public interface DataField extends VariableField {
 
-  /**
-   * Returns the first indicator
-   * 
-   * @return char - the first indicator
-   */
-  public char getIndicator1();
+	/**
+	 * Returns the first indicator
+	 * 
+	 * @return char - the first indicator
+	 */
+	public char getIndicator1();
 
-  /**
-   * Sets the first indicator.
-   * 
-   * @param ind1
-   *          the first indicator
-   */
-  public void setIndicator1(char ind1);
+	/**
+	 * Sets the first indicator.
+	 * 
+	 * @param ind1
+	 *            the first indicator
+	 */
+	public void setIndicator1(char ind1);
 
-  /**
-   * Returns the second indicator
-   * 
-   * @return char - the second indicator
-   */
-  public char getIndicator2();
+	/**
+	 * Returns the second indicator
+	 * 
+	 * @return char - the second indicator
+	 */
+	public char getIndicator2();
 
-  /**
-   * Sets the second indicator.
-   * 
-   * @param ind2
-   *          the second indicator
-   */
-  public void setIndicator2(char ind2);
+	/**
+	 * Sets the second indicator.
+	 * 
+	 * @param ind2
+	 *            the second indicator
+	 */
+	public void setIndicator2(char ind2);
 
-  /**
-   * Returns the list of <code>Subfield</code> objects.
-   * 
-   * @return List - the list of <code>Subfield</code> objects
-   */
-  public List getSubfields();
+	/**
+	 * Returns the list of <code>Subfield</code> objects.
+	 * 
+	 * @return List - the list of <code>Subfield</code> objects
+	 */
+	public List getSubfields();
 
-  /**
-   * Returns the list of <code>Subfield</code> objects for the goven subfield
-   * code.
-   * 
-   * @param code
-   *          the subfield code
-   * @return List - the list of <code>Subfield</code> objects
-   */
-  public List getSubfields(char code);
+	/**
+	 * Returns the list of <code>Subfield</code> objects for the goven
+	 * subfield code.
+	 * 
+	 * @param code
+	 *            the subfield code
+	 * @return List - the list of <code>Subfield</code> objects
+	 */
+	public List getSubfields(char code);
 
-  /**
-   * Returns the first <code>Subfield</code> with the given code.
-   * 
-   * @param code
-   *          the subfield code
-   * @return Subfield - the subfield object or null if no subfield is found
-   */
-  public Subfield getSubfield(char code);
+	/**
+	 * Returns the first <code>Subfield</code> with the given code.
+	 * 
+	 * @param code
+	 *            the subfield code
+	 * @return Subfield - the subfield object or null if no subfield is found
+	 */
+	public Subfield getSubfield(char code);
 
-  /**
-   * Adds a <code>Subfield</code>.
-   * 
-   * @param subfield
-   *          the <code>Subfield</code> object
-   * @throws IllegalAddException
-   *           when the parameter is not a <code>Subfield</code> instance
-   */
-  public void addSubfield(Subfield subfield);
+	/**
+	 * Adds a <code>Subfield</code>.
+	 * 
+	 * @param subfield
+	 *            the <code>Subfield</code> object
+	 * @throws IllegalAddException
+	 *             when the parameter is not a <code>Subfield</code> instance
+	 */
+	public void addSubfield(Subfield subfield);
 
-  /**
-   * Removes a <code>Subfield</code>.
-   */
-  public void removeSubfield(Subfield subfield);
+	/**
+	 * Inserts a <code>Subfield</code> at the specified position.
+	 * 
+	 * @param index
+	 *            the position within the list
+	 * @param subfield
+	 *            the <code>Subfield</code> object
+	 * @throws IllegalAddException
+	 *             when the parameter is not a <code>Subfield</code> instance
+	 */
+	public void addSubfield(int index, Subfield subfield);
+
+	/**
+	 * Removes a <code>Subfield</code>.
+	 */
+	public void removeSubfield(Subfield subfield);
 
 }
