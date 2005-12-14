@@ -63,7 +63,6 @@ public interface Record extends Serializable {
    * 
    * @param field
    *          the variable field
-   * @return true if the field is removed from the collection
    */
   public void removeVariableField(VariableField field);
 
@@ -121,6 +120,19 @@ public interface Record extends Serializable {
    */
   public List getVariableFields(String tag);
 
+  /**
+   * Returns a list of variable fields for the given tags.
+   * 
+   * <p>For example:
+   * <pre>
+   * String tags = {"100", "245", "260", "300"};
+   * List fields = record.getVariableFields(tags);
+   * </pre>
+   * 
+   * @return List - the variable fields
+   */
+  public List getVariableFields(String[] tag);
+  
   /**
    * Returns the <code>Leader</code>.
    * 
