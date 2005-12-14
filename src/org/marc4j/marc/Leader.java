@@ -182,4 +182,25 @@ public interface Leader extends Serializable {
    */
   public char[] getEntryMap();  
   
+  /**
+   * <p>
+   * Creates a leader object from a string object.
+   * </p>
+   * 
+   * <p>
+   * Indicator count and subfield code length are defaulted to 2 if they are not
+   * integer values.
+   * </p>
+   * 
+   * @param ldr the leader
+   */
+  public void unmarshal(String ldr);
+  
+  /**
+   * Creates a string object from this leader object.
+   * 
+   * @return String - the string object from this leader object
+   */
+  public String marshal();
+  
 }
