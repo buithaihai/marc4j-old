@@ -63,4 +63,14 @@ public class VariableFieldImpl implements VariableField {
   public String getTag() {
     return tag;
   }
+  
+  /**
+   * Returns a string representation of this variable field.
+   * 
+   * @return String - a string representation of this variable field
+   */
+  public String toString() {
+      return tag;
+  }
+  
 }

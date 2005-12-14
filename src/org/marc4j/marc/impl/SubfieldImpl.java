@@ -102,4 +102,17 @@ public class SubfieldImpl implements Subfield {
     return data;
   }
 
+  /**
+   * Returns a string representation of this subfield.
+   * 
+   * <p>Example:
+   * 
+   * <pre>$aSummerland /</pre>
+   * 
+   * @return String - a string representation of this subfield
+   */
+  public String toString() {
+      return "$" + getCode() + getData();
+  }
+
 }

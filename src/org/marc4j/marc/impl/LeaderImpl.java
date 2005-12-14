@@ -273,15 +273,6 @@ public class LeaderImpl implements Leader {
     return entryMap;
   }
 
-  public String toString() {
-    return new StringBuffer().append(format5.format(getRecordLength())).append(
-        getRecordStatus()).append(getTypeOfRecord()).append(getImplDefined1())
-        .append(getCharCodingScheme()).append(getIndicatorCount()).append(
-            getSubfieldCodeLength()).append(
-            format5.format(getBaseAddressOfData())).append(getImplDefined2())
-        .append(getEntryMap()).toString();
-  }
-
   /**
    * <p>
    * Creates a leader object from a string object.
@@ -329,6 +320,30 @@ public class LeaderImpl implements Leader {
     }
   }
 
+  /**
+   * Creates a string object from this leader object.
+   * 
+   * @return String - the string object from this leader object
+   */
+  public String marshal() {
+      return this.toString();
+  }
+  
+  /**
+   * Returns a string representation of this leader.
+   * 
+   * <p>Example:
+   * <pre>00714cam a2200205 a 4500</pre>
+   */
+  public String toString() {
+    return new StringBuffer().append(format5.format(getRecordLength())).append(
+        getRecordStatus()).append(getTypeOfRecord()).append(getImplDefined1())
+        .append(getCharCodingScheme()).append(getIndicatorCount()).append(
+            getSubfieldCodeLength()).append(
+            format5.format(getBaseAddressOfData())).append(getImplDefined2())
+        .append(getEntryMap()).toString();
+  }
+  
   private boolean isInteger(String value) {
     int len = value.length();
     if (len == 0)
@@ -353,7 +368,7 @@ public class LeaderImpl implements Leader {
     } while (++i < len);
     return true;
   }
-
+  
   private static DecimalFormat format5 = new DecimalFormat("00000");
 
 }

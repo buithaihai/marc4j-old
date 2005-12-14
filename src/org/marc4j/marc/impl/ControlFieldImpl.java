@@ -73,5 +73,17 @@ public class ControlFieldImpl extends VariableFieldImpl implements ControlField 
   public String getData() {
     return data;
   }
+  
+  /**
+   * Returns a string representation of this control field.
+   * 
+   * <p>Example:
+   * <pre>001 12883376</pre>
+   * 
+   * @return String - a string representation of this control field
+   */
+  public String toString() {
+      return super.toString() + " " + getData();
+  }
 
 }
