@@ -30,7 +30,7 @@ import java.io.Serializable;
  */
 public interface Subfield extends Serializable {
   
-  /**
+/**
    * Returns the data element identifier.
    * 
    * @return char - the data element identifier
