@@ -106,7 +106,7 @@ public class AnselToUnicode implements CharConverter {
     protected boolean loadedMultibyte = false;
 
     /**
-     * Creates a new instance and loads the MARC4J supplied Ansel/Unicode
+     * Creates a new instance and loads the MARC4J supplied
      * conversion tables based on the official LC tables.
      *  
      */
