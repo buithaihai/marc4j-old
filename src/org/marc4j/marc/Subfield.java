@@ -59,5 +59,17 @@ public interface Subfield extends Serializable {
    *          the data element
    */
   public void setData(String data);
+ 
+  /**
+   * Returns true if the given regular expression matches a subsequence of the
+   * data element.
+   * 
+   * See (@link java.util.regex.Pattern} for regular expressions.
+   * 
+   * @param pattern
+   *            the regular expression
+   * @return true if the pattern matches, false othewise
+   */
+  public boolean find(String pattern);
   
 }

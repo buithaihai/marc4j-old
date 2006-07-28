@@ -24,25 +24,40 @@ import java.io.Serializable;
 
 /**
  * Represents a variable field in a MARC record.
- *
+ * 
  * @author Bas Peters
  * @version $Revision$
  */
 public interface VariableField extends Serializable {
 
-  /**
-   * Returns the tag name.
-   * 
-   * @return String - the tag name
-   */
-  public String getTag();
-  
-  /**
-   * Sets the tag name.
-   * 
-   * @param tag
-   *          the tag name
-   */
-  public void setTag(String tag); 
-  
+    /**
+     * Returns the tag name.
+     * 
+     * @return String - the tag name
+     */
+    public String getTag();
+
+    /**
+     * Sets the tag name.
+     * 
+     * @param tag
+     *            the tag name
+     */
+    public void setTag(String tag);
+
+    /**
+     * Returns true if the given regular expression matches a subsequence of a
+     * data element within the variable field.
+     * 
+     * <p>
+     * See {@link java.util.regex.Pattern} for more information about Java
+     * regular expressions.
+     * </p>
+     * 
+     * @param pattern
+     *            the regular expression
+     * @return true if the pattern matches, false othewise
+     */
+    public abstract boolean find(String pattern);
+
 }
