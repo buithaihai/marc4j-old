@@ -184,6 +184,20 @@ public abstract class MarcFactory {
   public abstract Record newRecord();
 
   /**
+   * Returns a new record instance.
+   * 
+   * @return Record
+   */
+  public abstract Record newRecord(Leader leader);
+    
+  /**
+   * Returns a new record instance.
+   * 
+   * @return Record
+   */
+  public abstract Record newRecord(String leader);
+  
+  /**
    * Returns a new subfield instance.
    * 
    * @return Leader
