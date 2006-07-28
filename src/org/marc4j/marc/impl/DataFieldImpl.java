@@ -171,11 +171,25 @@ public class DataFieldImpl extends VariableFieldImpl implements DataField {
         return null;
     }
 
+    public boolean find(String pattern) {
+        Iterator i = subfields.iterator();
+        while (i.hasNext()) {
+            Subfield sf = (Subfield) i.next();
+            if (sf.find(pattern))
+                return true;
+        }
+        return false;
+    }
+
     /**
      * Returns a string representation of this data field.
      * 
-     * <p>Example:
-     * <pre>245 10$aSummerland /$cMichael Chabon.</pre>
+     * <p>
+     * Example:
+     * 
+     * <pre>
+     *    245 10$aSummerland /$cMichael Chabon.
+     * </pre>
      * 
      * @return String - a string representation of this data field
      */
@@ -192,4 +206,5 @@ public class DataFieldImpl extends VariableFieldImpl implements DataField {
         }
         return sb.toString();
     }
+
 }

@@ -28,49 +28,38 @@ import org.marc4j.marc.VariableField;
  * @author Bas Peters
  * @version $Revision$
  */
-public class VariableFieldImpl implements VariableField {
+public abstract class VariableFieldImpl implements VariableField {
 
-  private String tag;
+    private String tag;
 
-  /**
-   * Creates a new <code>VariableField</code>.
-   */
-  public VariableFieldImpl() {
-  }
+    /**
+     * Creates a new <code>VariableField</code>.
+     */
+    public VariableFieldImpl() {
+    }
 
-  /**
-   * Creates a new <code>VariableField</code> and sets the tag name.
-   */
-  public VariableFieldImpl(String tag) {
-    this.setTag(tag);
-  }
+    /**
+     * Creates a new <code>VariableField</code> and sets the tag name.
+     */
+    public VariableFieldImpl(String tag) {
+        this.setTag(tag);
+    }
 
-  /**
-   * Sets the tag name.
-   * 
-   * @param tag
-   *          the tag name
-   */
-  public void setTag(String tag) {
-    this.tag = tag;
-  }
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
-  /**
-   * Returns the tag name.
-   * 
-   * @return String - the tag name
-   */
-  public String getTag() {
-    return tag;
-  }
-  
-  /**
-   * Returns a string representation of this variable field.
-   * 
-   * @return String - a string representation of this variable field
-   */
-  public String toString() {
-      return tag;
-  }
-  
+    public String getTag() {
+        return tag;
+    }
+
+    /**
+     * Returns a string representation of this variable field.
+     * 
+     * @return String - a string representation of this variable field
+     */
+    public String toString() {
+        return tag;
+    }
+
 }
