@@ -48,6 +48,9 @@ import org.xml.sax.InputSource;
  * }
  * </pre>
  * 
+ * <p>Check the {@link org.marc4j.marc}&nbsp;package for examples about the use of 
+ * the {@link org.marc4j.marc.Record}&nbsp;object model.</p>
+ *
  * <p>
  * You can also pre-process the source to create MARC XML from a different format
  * using an XSLT stylesheet. The following example creates an iterator over a

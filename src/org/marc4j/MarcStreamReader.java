@@ -48,6 +48,9 @@ import org.marc4j.marc.impl.Verifier;
  * }
  * </pre>
  * 
+ * <p>Check the {@link org.marc4j.marc}&nbsp;package for examples about the use of 
+ * the {@link org.marc4j.marc.Record}&nbsp;object model.</p>
+ * 
  * <p>
  * When no encoding is given as an constructor argument the parser tries to
  * resolve the encoding by looking at the character coding scheme (leader
