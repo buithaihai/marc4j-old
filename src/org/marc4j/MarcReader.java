@@ -26,8 +26,8 @@ import org.marc4j.marc.Record;
  * Implement this interface to provide an iterator over a collection of
  * <code>Record</code> objects.
  * 
- * See the <code>org.marc4j.marc</code> package Javadoc for more information
- * about the <code>Record</code> object model.
+ * <p>See the {@link org.marc4j.marc} package Javadoc for more information
+ * about the {@link org.marc4j.marc.Record} object model.</p>
  * 
  * @author Bas Peters
  * @version $Revision$
