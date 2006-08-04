@@ -33,6 +33,8 @@ import org.marc4j.marc.Subfield;
  */
 public class SubfieldImpl implements Subfield {
 
+    private Long id;
+    
     private char code;
 
     private String data;
@@ -104,6 +106,14 @@ public class SubfieldImpl implements Subfield {
      */
     public String toString() {
         return "$" + getCode() + getData();
+    }
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

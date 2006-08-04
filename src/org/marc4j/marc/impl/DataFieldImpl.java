@@ -36,6 +36,8 @@ import org.marc4j.marc.Subfield;
  */
 public class DataFieldImpl extends VariableFieldImpl implements DataField {
 
+    private Long id;
+    
     private char ind1;
 
     private char ind2;
@@ -205,6 +207,14 @@ public class DataFieldImpl extends VariableFieldImpl implements DataField {
             sb.append(sf.toString());
         }
         return sb.toString();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }

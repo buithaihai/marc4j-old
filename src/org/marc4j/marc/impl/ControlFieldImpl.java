@@ -33,6 +33,8 @@ import org.marc4j.marc.ControlField;
  */
 public class ControlFieldImpl extends VariableFieldImpl implements ControlField {
 
+    private Long id;
+    
     private String data;
 
     /**
@@ -86,6 +88,14 @@ public class ControlFieldImpl extends VariableFieldImpl implements ControlField 
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(getData());
         return m.find();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }
