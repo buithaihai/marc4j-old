@@ -239,14 +239,7 @@ public class MarcXmlWriter implements MarcWriter {
      * @throws MarcException
      */
     public MarcXmlWriter(OutputStream out, boolean indent) {
-        if (out == null) {
-            throw new NullPointerException("Null OutputStream");
-        }
-        setIndent(indent);
-        Writer writer = new OutputStreamWriter(out);
-        writer = new BufferedWriter(writer);
-        setHandler(new StreamResult(writer), null);
-        writeStartDocument();
+        this(out, "UTF8", indent);
     }
 
     /**
