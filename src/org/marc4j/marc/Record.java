@@ -34,6 +34,24 @@ import org.marc4j.marc.Leader;
 public interface Record extends Serializable {
 
     /**
+     * Sets the identifier.
+     * 
+     * <p>
+     * The purpose of this identifier is to provide an identifier for
+     * persistency.
+     * 
+     * @param id the identifier
+     */
+    public void setId(Long id);
+
+    /**
+     * Returns the identifier.
+     * 
+     * @return Long - the identifier
+     */
+    public Long getId();
+
+    /**
      * Sets the type of record.
      * 
      * @param type

@@ -29,47 +29,66 @@ import java.io.Serializable;
  * @version $Revision$
  */
 public interface Subfield extends Serializable {
-  
-/**
-   * Returns the data element identifier.
-   * 
-   * @return char - the data element identifier
-   */
-  public char getCode();
-  
-  /**
-   * Sets the data element identifier.
-   * 
-   * @param code
-   *          the data element identifier
-   */
-  public void setCode(char code);
-  
-  /**
-   * Returns the data element.
-   * 
-   * @return String - the data element
-   */
-  public String getData();
 
-  /**
-   * Sets the data element.
-   * 
-   * @param data
-   *          the data element
-   */
-  public void setData(String data);
- 
-  /**
-   * Returns true if the given regular expression matches a subsequence of the
-   * data element.
-   * 
-   * See (@link java.util.regex.Pattern} for regular expressions.
-   * 
-   * @param pattern
-   *            the regular expression
-   * @return true if the pattern matches, false othewise
-   */
-  public boolean find(String pattern);
-  
+    /**
+     * Sets the identifier.
+     * 
+     * <p>
+     * The purpose of this identifier is to provide an identifier for
+     * persistency.
+     * 
+     * @param id
+     *            the identifier
+     */
+    public void setId(Long id);
+
+    /**
+     * Returns the identifier.
+     * 
+     * @return Long - the identifier
+     */
+    public Long getId();
+
+    /**
+     * Returns the data element identifier.
+     * 
+     * @return char - the data element identifier
+     */
+    public char getCode();
+
+    /**
+     * Sets the data element identifier.
+     * 
+     * @param code
+     *            the data element identifier
+     */
+    public void setCode(char code);
+
+    /**
+     * Returns the data element.
+     * 
+     * @return String - the data element
+     */
+    public String getData();
+
+    /**
+     * Sets the data element.
+     * 
+     * @param data
+     *            the data element
+     */
+    public void setData(String data);
+
+    /**
+     * Returns true if the given regular expression matches a subsequence of the
+     * data element.
+     * 
+     * See (@link java.util.regex.Pattern} for regular expressions.
+     * 
+     * @param pattern
+     *            the regular expression
+     * @return true if the pattern matches, false othewise
+     */
+    public boolean find(String pattern);
+
 }
