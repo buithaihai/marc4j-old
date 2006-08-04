@@ -52,6 +52,14 @@ public abstract class VariableFieldImpl implements VariableField {
     public String getTag() {
         return tag;
     }
+    
+    public int compareTo(Object obj) {
+        if (!(obj instanceof VariableFieldImpl))
+            throw new ClassCastException("A VariableField object expected");
+
+        VariableField field = (VariableField) obj;
+        return tag.compareTo(field.getTag());
+    }
 
     /**
      * Returns a string representation of this variable field.
