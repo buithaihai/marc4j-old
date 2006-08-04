@@ -142,7 +142,7 @@ public class MarcStreamReader implements MarcReader {
 				break;
 			case 'a':
 				if (encoding == null)
-					encoding = "UTF-8";
+					encoding = "UTF8";
 			}
 
 			record.setLeader(ldr);
