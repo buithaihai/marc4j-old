@@ -77,7 +77,7 @@ public class MarcStreamWriter implements MarcWriter {
 
     private OutputStream out = null;
 
-    private String encoding = "ISO_8859_1";
+    private String encoding = "ISO8859_1";
 
     private CharConverter converter = null;
 
