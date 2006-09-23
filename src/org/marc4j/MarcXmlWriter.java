@@ -502,7 +502,7 @@ public class MarcXmlWriter implements MarcWriter {
             atts.addAttribute("", "tag", "tag", "CDATA", field.getTag());
             atts.addAttribute("", "ind1", "ind1", "CDATA", String.valueOf(field
                     .getIndicator1()));
-            atts.addAttribute("", "ind1", "ind2", "CDATA", String.valueOf(field
+            atts.addAttribute("", "ind2", "ind2", "CDATA", String.valueOf(field
                     .getIndicator2()));
 
             if (indent)
