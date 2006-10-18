@@ -108,12 +108,12 @@ public class MarcFactoryImpl extends MarcFactory {
     }
 
     /**
-     * Returns a new record instance.
+     * Returns a new record instance with a default leader.
      * 
      * @return Record
      */
     public Record newRecord() {
-        return new RecordImpl();
+        return newRecord(new LeaderImpl("00000nam a2200000 a 4500"));
     }
 
     /**
