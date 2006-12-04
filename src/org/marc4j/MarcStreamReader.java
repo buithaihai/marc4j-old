@@ -72,7 +72,7 @@ public class MarcStreamReader implements MarcReader {
 
     private MarcFactory factory;
 
-    private String encoding = "ISO8859_1";
+    private String encoding = null;
 
     private boolean hasNext = true;
 
