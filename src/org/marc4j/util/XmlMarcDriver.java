@@ -200,6 +200,8 @@ public class XmlMarcDriver {
 
         while (reader.hasNext()) {
             Record record = reader.next();
+            if (Constants.MARC_8_ENCODING.equals(convert))
+                record.getLeader().setCharCodingScheme(' ');
             writer.write(record);
         }
         writer.close();
