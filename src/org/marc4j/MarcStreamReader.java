@@ -72,7 +72,9 @@ public class MarcStreamReader implements MarcReader {
 
     private MarcFactory factory;
 
-    private String encoding = null;
+    private String encoding = "ISO8859_1";
+
+    private boolean override = false;
 
     private boolean hasNext = true;
 
@@ -90,8 +92,10 @@ public class MarcStreamReader implements MarcReader {
     public MarcStreamReader(InputStream input, String encoding) {
         this.input = input;
         factory = MarcFactory.newInstance();
-        if (encoding != null)
+        if (encoding != null) {
             this.encoding = encoding;
+            override = true;
+        }
     }
 
     /**
@@ -137,13 +141,14 @@ public class MarcStreamReader implements MarcReader {
                         + new String(byteArray), e);
             }
 
+            // if MARC 21 then check encoding
             switch (ldr.getCharCodingScheme()) {
             case ' ':
-                if (encoding == null)
+                if (!override)
                     encoding = "ISO8859_1";
                 break;
             case 'a':
-                if (encoding == null)
+                if (!override)
                     encoding = "UTF8";
             }
 
