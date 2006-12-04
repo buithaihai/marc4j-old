@@ -221,6 +221,8 @@ public class MarcXmlDriver {
 
         while (reader.hasNext()) {
             Record record = reader.next();
+            if (Constants.MARC_8_ENCODING.equals(convert))
+                record.getLeader().setCharCodingScheme('a');
             writer.write(record);
         }
         writer.close();
