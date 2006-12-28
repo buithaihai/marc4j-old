@@ -113,7 +113,7 @@ public class XmlMarcDriver {
         String output = null;
         String stylesheet = null;
         String convert = null;
-        String encoding = "ISO_8859_1";
+        String encoding = null;
 
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-xsl")) {
