@@ -397,8 +397,8 @@ public class MarcXmlWriter implements MarcWriter {
             handler.startDocument();
             handler.startPrefixMapping("", Constants.MARCXML_NS_URI);
             // add namespace declaration using attribute - need better solution
-            atts.addAttribute(Constants.MARCXML_NS_URI, "xmlns", "xmlns",
-                    "CDATA", Constants.MARCXML_NS_URI);
+            //atts.addAttribute(Constants.MARCXML_NS_URI, "xmlns", "xmlns",
+            //        "CDATA", Constants.MARCXML_NS_URI);
             handler.startElement(Constants.MARCXML_NS_URI, COLLECTION,
                     COLLECTION, atts);
         } catch (SAXException e) {
