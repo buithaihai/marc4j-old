@@ -32,7 +32,7 @@ import org.marc4j.converter.CharConverter;
  * @author Yves Pratter
  * @version $Revision$
  */
-public class Iso6937ToUnicode implements CharConverter {
+public class Iso6937ToUnicode extends CharConverter {
 
   /**
    * <p>
@@ -43,8 +43,7 @@ public class Iso6937ToUnicode implements CharConverter {
    *          the ISO 6937 data
    * @return {@link String}- the UCS/Unicode data
    */
-  public String convert(String dataElement) {
-    char[] data = dataElement.toCharArray();
+  public String convert(char data[]) {
     StringBuffer sb = new StringBuffer();
 
     for (int i = 0; i < data.length; i++) {

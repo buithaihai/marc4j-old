@@ -22,7 +22,7 @@ package org.marc4j.converter.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.xml.parsers.SAXParser;
@@ -47,11 +47,11 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class CodeTableHandler extends DefaultHandler {
 
-  private Hashtable sets;
+  private HashMap sets;
 
-  private Hashtable charset;
+  private HashMap charset;
 
-  private Hashtable combiningchars;
+  private HashMap combiningchars;
 
   /** Data element identifier */
   private Integer isocode;
@@ -75,11 +75,11 @@ public class CodeTableHandler extends DefaultHandler {
   /** Locator object */
   private Locator locator;
 
-  public Hashtable getCharSets() {
+  public HashMap getCharSets() {
     return sets;
   }
 
-  public Hashtable getCombiningChars() {
+  public HashMap getCombiningChars() {
     return combiningchars;
   }
 
@@ -98,14 +98,14 @@ public class CodeTableHandler extends DefaultHandler {
   public void startElement(String uri, String name, String qName,
       Attributes atts) throws SAXParseException {
     if (name.equals("characterSet")) {
-      charset = new Hashtable();
+      charset = new HashMap();
       isocode = Integer.valueOf(atts.getValue("ISOcode"), 16);
       combining = new Vector();
     } else if (name.equals("marc"))
       data = new StringBuffer();
     else if (name.equals("codeTables")) {
-      sets = new Hashtable();
-      combiningchars = new Hashtable();
+      sets = new HashMap();
+      combiningchars = new HashMap();
     } else if (name.equals("ucs"))
       data = new StringBuffer();
     else if (name.equals("alt"))
@@ -135,7 +135,7 @@ public class CodeTableHandler extends DefaultHandler {
       if (data.length() > 0)
         ucs = new Character((char) Integer.parseInt(data.toString(), 16));
       else
-        useAlt = true;
+        ucs = null;
     } else if (name.equals("alt")) {
       if (useAlt && data.length() > 0) {
         ucs = new Character((char) Integer.parseInt(data.toString(), 16));
@@ -155,7 +155,7 @@ public class CodeTableHandler extends DefaultHandler {
   }
 
   public static void main(String[] args) {
-    Hashtable charsets = null;
+    HashMap charsets = null;
 
     try {
 

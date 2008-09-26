@@ -179,7 +179,9 @@ public class RecordImpl implements Record {
     }
 
     public String getControlNumber() {
-        return new String(getControlNumberField().getData());
+        ControlField f = getControlNumberField();
+        String result = (f == null || f.getData() == null) ? null : new String(f.getData());
+        return(result);
     }
 
     public List getVariableFields(String[] tags) {

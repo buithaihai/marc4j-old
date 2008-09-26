@@ -31,7 +31,7 @@ import org.marc4j.converter.CharConverter;
  * @author Yves Pratter
  * @version $Revision$
  */
-public class UnicodeToIso5426 implements CharConverter {
+public class UnicodeToIso5426 extends CharConverter {
 
   /**
    * <p>
@@ -46,8 +46,7 @@ public class UnicodeToIso5426 implements CharConverter {
    *          the UCS/Unicode data
    * @return {@link String}- the UNIMARC (ISO 5426 charset) data
    */
-  public String convert(String dataElement) {
-    char[] data = dataElement.toCharArray();
+  public String convert(char data[]) {
     StringBuffer sb = new StringBuffer();
     for (int i = 0; i < data.length; i++) {
       char c = data[i];

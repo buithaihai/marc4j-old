@@ -36,7 +36,7 @@ import org.marc4j.marc.Record;
 public class RecordStack {
 
   private List list;
-
+  private RuntimeException re = null;
   private boolean eof = false;
 
   /**
@@ -77,6 +77,7 @@ public class RecordStack {
       } catch (Exception e) {
       }
     }
+    if (re != null) throw(re);
     Record record = null;
     if (list.size() > 0)
       record = (Record) list.remove(0);
@@ -98,10 +99,21 @@ public class RecordStack {
       } catch (Exception e) {
       }
     }
-
+    if (re != null) throw(re);
     if (!isEmpty() || !eof)
       return true;
     return false;
+  }
+
+  /**
+   * Passes the exception to the thread where the MarcXMLReader is running, so that the  next() call
+   * that is blocked waiting for this thread, will receive the exception.
+   *  
+   */
+  public synchronized void passException(RuntimeException e) {
+    re = e;
+    eof = true;
+    notifyAll();
   }
 
   /**

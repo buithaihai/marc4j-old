@@ -115,7 +115,12 @@ public class MarcXmlParserThread extends Thread {
                 parser.parse(input);
             else
                 parser.parse(input, th);
-        } finally {
+        } 
+        catch (MarcException me)
+        {
+            queue.passException(me);
+        }
+        finally {
             queue.end();
         }
     }

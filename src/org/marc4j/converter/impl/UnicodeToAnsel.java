@@ -38,7 +38,7 @@ import org.marc4j.converter.CharConverter;
  * @author Corey Keith
  * @version $Revision$
  */
-public class UnicodeToAnsel implements CharConverter {
+public class UnicodeToAnsel extends CharConverter {
     protected ReverseCodeTable rct;
 
     static final char ESC = 0x1b;
@@ -97,8 +97,7 @@ public class UnicodeToAnsel implements CharConverter {
      *            the UCS/Unicode data
      * @return String - the MARC-8 data
      */
-    public String convert(String dataElement) {
-        char[] data = dataElement.toCharArray();
+    public String convert(char data[]) {
         StringBuffer sb = new StringBuffer();
         CodeTableTracker ctt = new CodeTableTracker();
 
