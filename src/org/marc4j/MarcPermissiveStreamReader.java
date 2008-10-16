@@ -1515,7 +1515,7 @@ public class MarcPermissiveStreamReader implements MarcReader {
         return(errors.hasErrors());
     }
 
-    public List<Object> getErrors()
+    public List getErrors()
     {
         return(errors.getErrors());
     }

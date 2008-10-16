@@ -41,7 +41,7 @@ public class ErrorHandler {
     public final static int WARNING = 1;
     public final static int INFO = 0;
     
-    private List<Object> errors;
+    private List errors;
     private String curRecordID;
     private String curField;
     private String curSubfield;
@@ -122,7 +122,7 @@ public class ErrorHandler {
         return (maxSeverity);
     }
     
-    public List<Object> getErrors()
+    public List getErrors()
     {
         if (errors == null || errors.size() == 0) return null;        
         return(errors);
@@ -138,7 +138,7 @@ public class ErrorHandler {
     {
         if (errors == null) 
         {
-            errors = new LinkedList<Object>();
+            errors = new LinkedList();
             hasMissingID = false;
         }
         if (id != null && id.equals("unknown"))  hasMissingID = true;
@@ -164,7 +164,7 @@ public class ErrorHandler {
     {
         if (id != null)
         { 
-            Iterator<Object> iter = errors.iterator();       
+            Iterator iter = errors.iterator();       
             while (iter.hasNext())
             {
                 Error err = (Error)(iter.next());
