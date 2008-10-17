@@ -42,8 +42,7 @@ public class UnicodeToIso5426 extends CharConverter {
    * A question mark (0x3F) is returned if there is no match.
    * </p>
    * 
-   * @param dataElement
-   *          the UCS/Unicode data
+   * @param data - the UCS/Unicode data in an array of char
    * @return {@link String}- the UNIMARC (ISO 5426 charset) data
    */
   public String convert(char data[]) {

@@ -93,8 +93,7 @@ public class UnicodeToAnsel extends CharConverter {
      * A question mark (0x3F) is returned if there is no match.
      * </p>
      * 
-     * @param dataElement
-     *            the UCS/Unicode data
+     * @param data - the UCS/Unicode data in an array of char
      * @return String - the MARC-8 data
      */
     public String convert(char data[]) {

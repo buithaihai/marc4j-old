@@ -39,8 +39,7 @@ public class Iso5426ToUnicode extends CharConverter {
    * Converts UNIMARC (ISO 5426 charset) data to UCS/Unicode.
    * </p>
    * 
-   * @param dataElement
-   *          the UNIMARC data
+   * @param data - the UNIMARC data in an array of char
    * @return {@link String}- the UCS/Unicode data
    */
   public String convert(char data[]) {

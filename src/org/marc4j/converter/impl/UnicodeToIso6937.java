@@ -42,8 +42,7 @@ public class UnicodeToIso6937 extends CharConverter {
    * A question mark (0x3F) is returned if there is no match.
    * </p>
    * 
-   * @param dataElement
-   *          the UCS/Unicode data
+   * @param data - the UCS/Unicode data in an array of char
    * @return {@link String}- the ISO 6937 data
    */
   public String convert(char data[]) {

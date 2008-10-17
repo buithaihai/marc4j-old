@@ -39,8 +39,7 @@ public class Iso6937ToUnicode extends CharConverter {
    * Converts ISO 6937 data to UCS/Unicode.
    * </p>
    * 
-   * @param dataElement
-   *          the ISO 6937 data
+   * @param data - the ISO 6937 data in an array of char
    * @return {@link String}- the UCS/Unicode data
    */
   public String convert(char data[]) {
