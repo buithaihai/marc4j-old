@@ -414,9 +414,7 @@ public class AnselToUnicode extends CharConverter {
                 {
                     // if a 0x20 byte occurs amidst a sequence of multibyte characters
                     // skip over it and output a space.
-                    // Hmmm.  If the following line is present it seems to output two spaces 
-                    // when a space occurs in multibytes chars, without it one seems to be output.
-                    //    sb.append(getChar(data[cdt.offset], cdt.g0, cdt.g1));
+                    sb.append(getChar(data[cdt.offset], cdt.g0, cdt.g1));
                     cdt.offset += 1;
                 }
                 else if (cdt.offset + 3 <= data.length && (errorList == null || data[cdt.offset+1]!= 0x20 && data[cdt.offset+2]!= 0x20)) 
