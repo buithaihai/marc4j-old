@@ -21,6 +21,7 @@
 package org.marc4j.converter.impl;
 
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
 import java.util.Hashtable;
 
 import org.marc4j.converter.CharConverter;
@@ -61,7 +62,7 @@ public class UnicodeToAnsel extends CharConverter {
      * the MARC-8 encodings for given Unicode characters.
      */
     public UnicodeToAnsel() {
-        rct = new ReverseCodeTableGenerated();
+        rct = loadGeneratedTable();
         //this(UnicodeToAnsel.class
         //        .getResourceAsStream("resources/codetables.xml"));
     }
@@ -90,6 +91,23 @@ public class UnicodeToAnsel extends CharConverter {
      */
     public UnicodeToAnsel(InputStream in) {
         rct = new ReverseCodeTableHash(in);
+    }
+    
+    private ReverseCodeTable loadGeneratedTable() 
+    {
+        try
+        {
+            Class generated = Class.forName("org.marc4j.converter.impl.ReverseCodeTableGenerated");
+            Constructor cons = generated.getConstructor();
+            Object rct = cons.newInstance();
+            return((ReverseCodeTable)rct);
+        }
+        catch (Exception e)
+        {
+            ReverseCodeTable rct;
+            rct = new ReverseCodeTableHash(AnselToUnicode.class.getResourceAsStream("resources/codetables.xml"));                
+            return(rct);
+        }
     }
 
     /**
