@@ -20,8 +20,8 @@
  */
 package org.marc4j.converter.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -160,28 +160,4 @@ public class ReverseCodeTableHandler extends DefaultHandler {
     data = null;
   }
 
-  public static void main(String[] args) {
-    Hashtable charsets = null;
-
-    try {
-
-      SAXParserFactory factory = SAXParserFactory.newInstance();
-      factory.setNamespaceAware(true);
-      factory.setValidating(false);
-      SAXParser saxParser = factory.newSAXParser();
-      XMLReader rdr = saxParser.getXMLReader();
-
-      File file = new File(
-          "C:\\Documents and Settings\\ckeith\\Desktop\\Projects\\Code Tables\\codetables.xml");
-      InputSource src = new InputSource(new FileInputStream(file));
-
-      ReverseCodeTableHandler saxUms = new ReverseCodeTableHandler();
-
-      rdr.setContentHandler(saxUms);
-      rdr.parse(src);
-    } catch (Exception exc) {
-      exc.printStackTrace(System.out);
-      System.err.println("Exception: " + exc);
-    }
-  }
 }
