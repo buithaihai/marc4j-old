@@ -481,7 +481,8 @@ public class AnselToUnicode extends CharConverter {
                         cdt.g1 = 0x45;
                     }
                 } 
-                else if (cdt.offset + 3 > data.length) 
+                else if (cdt.offset + 3 > data.length || 
+                         cdt.offset + 3 == data.length && (data[cdt.offset+1]== 0x20 || data[cdt.offset+2]== 0x20)) 
                 {
                     if (errorList != null)
                     {
