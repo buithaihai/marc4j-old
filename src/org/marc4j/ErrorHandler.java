@@ -219,12 +219,34 @@ public class ErrorHandler {
      *  in curRecordID, curField, and curSubfield to note the location of the error.
      * 
      * @param severity - An indication of the relative severity of the error that was 
-     * 						encountered.
+     *                      encountered.
      * @param message - A descriptive message about the error that was encountered.
      */
     public void addError(int severity, String message)
     {
         addError(curRecordID, curField, curSubfield, severity, message);
+    }
+
+    /**
+     *  Copys a List of errors into the current error handler
+     * 
+     * @param newErrors - A list of Errors.
+     * @param message - A descriptive message about the error that was encountered.
+     */
+    public void addErrors(List newErrors)
+    {
+        if (newErrors == null || newErrors.size() == 0) return;
+        if (errors == null) 
+        {
+            errors = new LinkedList();
+            hasMissingID = false;
+        }
+        for (Object err : newErrors)
+        {
+            Error errobj = (Error)err;
+            errors.add(errobj);
+            if (errobj.severity > maxSeverity)   maxSeverity = errobj.severity;   
+        }
     }
 
     private void setRecordIDForAll(String id)
