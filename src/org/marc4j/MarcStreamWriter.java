@@ -75,9 +75,9 @@ import org.marc4j.marc.Subfield;
  */
 public class MarcStreamWriter implements MarcWriter {
 
-    private OutputStream out = null;
+    protected OutputStream out = null;
 
-    private String encoding = "ISO8859_1";
+    protected String encoding = "ISO8859_1";
 
     private CharConverter converter = null;
 
@@ -188,7 +188,7 @@ public class MarcStreamWriter implements MarcWriter {
         }
     }
 
-    private void write(Leader ldr) throws IOException {
+    protected void write(Leader ldr) throws IOException {
         out.write(format5.format(ldr.getRecordLength()).getBytes(encoding));
         out.write(ldr.getRecordStatus());
         out.write(ldr.getTypeOfRecord());
@@ -221,7 +221,7 @@ public class MarcStreamWriter implements MarcWriter {
         return data.getBytes(encoding);
     }
 
-    private byte[] getEntry(String tag, int length, int start)
+    protected byte[] getEntry(String tag, int length, int start)
             throws IOException {
         return (tag + format4.format(length) + format5.format(start))
                 .getBytes(encoding);
