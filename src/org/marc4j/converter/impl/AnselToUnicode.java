@@ -219,7 +219,21 @@ public class AnselToUnicode extends CharConverter {
         int extra = 0;
         int extra2 = 0;
         int extra3 = 0;
-        while (cdt.offset + extra + extra2< data.length && isEscape(data[cdt.offset])) {
+        while (cdt.offset + extra + extra2 < data.length && isEscape(data[cdt.offset])) 
+        {
+            if (cdt.offset + extra + extra2 + 1 == data.length)
+            {
+                cdt.offset += 1;
+                if (errorList != null)
+                {
+                    errorList.addError(ErrorHandler.MINOR_ERROR, "Escape character found at end of field, discarding it.");
+                }
+                else
+                {
+                    throw new MarcException("Escape character found at end of field");
+                }
+                break;
+            }
             switch (data[cdt.offset + 1 + extra]) {
             case 0x28:  // '('
             case 0x2c:  // ','
