@@ -986,7 +986,14 @@ public class MarcPermissiveStreamReader implements MarcReader {
         if (permissive)
         {
             errors.setRecordID(record.getControlNumber());
-            errors.setCurrentField(tag); 
+            if (tag.equals("880"))
+            {
+                String fieldTag = new String(field);
+                fieldTag = fieldTag.replaceFirst("^.*\\x1F6", "").replaceFirst("([-0-9]*).*", "$1");
+                errors.setCurrentField(tag+"("+fieldTag+")"); 
+            }
+            else
+                errors.setCurrentField(tag); 
             errors.setCurrentSubfield("n/a");
             cleanupBadFieldSeperators(field);
         }
