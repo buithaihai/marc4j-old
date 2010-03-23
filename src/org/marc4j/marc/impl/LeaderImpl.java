@@ -65,9 +65,6 @@ public class LeaderImpl implements Leader {
     /** Entry map (Position 19-23). */
     private char[] entryMap;
 
-    /** number format for both record length and base address of data */
-    DecimalFormat df = new DecimalFormat("00000");
-
     /**
      * Default constructor.
      */
@@ -375,7 +372,7 @@ public class LeaderImpl implements Leader {
         return true;
     }
 
-    private static DecimalFormat format5 = new DecimalFormat("00000");
+    private static DecimalFormat format5 = new org.marc4j.util.CustomDecimalFormat(5);
 
     public void setId(Long id) {
         this.id = id;
