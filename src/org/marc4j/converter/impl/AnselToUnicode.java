@@ -401,7 +401,7 @@ public class AnselToUnicode extends CharConverter {
                     && hasNext(cdt.offset, len)) 
             {
 
-                while (ct.isCombining(data[cdt.offset], cdt.g0, cdt.g1)
+                while (cdt.offset < len && ct.isCombining(data[cdt.offset], cdt.g0, cdt.g1)
                         && hasNext(cdt.offset, len)) 
                 {
                     char c = getChar(data[cdt.offset], cdt.g0, cdt.g1);
@@ -409,7 +409,14 @@ public class AnselToUnicode extends CharConverter {
                     cdt.offset++;
                     checkMode(data, cdt);
                 }
-
+                if (cdt.offset >= len)
+                {
+                    if (errorList != null)
+                    {
+                        errorList.addError(ErrorHandler.MINOR_ERROR, "Diacritic found at the end of field, without the character that it is supposed to decorate");
+                        break;
+                    }
+                }
                 char c2 = getChar(data[cdt.offset], cdt.g0, cdt.g1);
                 cdt.offset++;
                 checkMode(data, cdt);
