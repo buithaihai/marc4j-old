@@ -81,13 +81,13 @@ public class MarcStreamWriter implements MarcWriter {
     protected String encoding = "ISO8859_1";
 
     private CharConverter converter = null;
-    private boolean allowOversizeEntry = false;
-    private boolean hasOversizeOffset = false;
-    private boolean hasOversizeLength = false;
+    protected boolean allowOversizeEntry = false;
+    protected boolean hasOversizeOffset = false;
+    protected boolean hasOversizeLength = false;
     
-    private static DecimalFormat format4Use = new CustomDecimalFormat(4);
+    protected static DecimalFormat format4Use = new CustomDecimalFormat(4);
 
-    private static DecimalFormat format5Use = new CustomDecimalFormat(5);
+    protected static DecimalFormat format5Use = new CustomDecimalFormat(5);
 
     /**
      * Constructs an instance and creates a <code>Writer</code> object with
@@ -252,7 +252,7 @@ public class MarcStreamWriter implements MarcWriter {
         }
     }
 
-    private byte[] getDataElement(String data) throws IOException {
+    protected byte[] getDataElement(String data) throws IOException {
         if (converter != null)
             return converter.convert(data).getBytes(encoding);
         return data.getBytes(encoding);
