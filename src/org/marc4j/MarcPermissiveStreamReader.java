@@ -1040,6 +1040,15 @@ public class MarcPermissiveStreamReader implements MarcReader {
                 if (code == Constants.FT)
                     break;
                 size = getSubfieldLength(bais);
+                if (size == 0)
+                {
+                    if (permissive)
+                    {
+                        errors.addError(ErrorHandler.MINOR_ERROR, "Subfield of zero length encountered, ignoring it.");
+                        continue;
+                    }
+                    throw new IOException("Subfield of zero length encountered");
+                }
                 data = new byte[size];
                 bais.read(data);
                 subfield = factory.newSubfield();
