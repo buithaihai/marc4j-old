@@ -411,7 +411,7 @@ public class MarcStreamReader implements MarcReader {
             if (converterAnsel == null) converterAnsel = new AnselToUnicode();
             dataElement = converterAnsel.convert(bytes);
         }
-        else if (encoding.equals("ISO-8859-1") || encoding.equals("ISO8859_1"))
+        else if (encoding.equals("ISO-8859-1") || encoding.equals("ISO8859_1") || encoding.equals("ISO_8859_1"))
         {
             try {
                 dataElement = new String(bytes, "ISO-8859-1");
