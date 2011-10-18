@@ -25,8 +25,8 @@ import java.lang.reflect.Constructor;
 import java.util.Hashtable;
 
 import org.marc4j.converter.CharConverter;
+import org.marc4j.util.Normalizer;
 
-import com.ibm.icu.text.Normalizer;
 
 /**
  * <p>
@@ -186,7 +186,10 @@ public class UnicodeToAnsel extends CharConverter {
                     sb.append((char) ASCII);
                     rct.setPreviousG0(ASCII);
                 }
-                sb.append("&#x"+Integer.toHexString(charValue).toUpperCase()+";");
+                if (charValue < 0x1000) 
+                    sb.append("&#x"+Integer.toHexString(charValue + 0x10000).toUpperCase().substring(1)+";");
+                else
+                    sb.append("&#x"+Integer.toHexString(charValue).toUpperCase()+";");
                 continue;
             }            
             else if (rct.inPreviousG0CharEntry(c))
