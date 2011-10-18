@@ -21,7 +21,6 @@
 package org.marc4j.marc.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,9 +42,9 @@ public class RecordImpl implements Record {
 
     private Leader leader;
 
-    private List controlFields;
+    protected List controlFields;
 
-    private List dataFields;
+    protected List dataFields;
 
     private String type;
 
@@ -97,13 +96,10 @@ public class RecordImpl implements Record {
                 controlFields.set(0, field);
             else
                 controlFields.add(0, field);
-            Collections.sort(controlFields);
         } else if (Verifier.isControlField(tag)) {
             controlFields.add(field);
-            Collections.sort(controlFields);
         } else {
             dataFields.add(field);
-            Collections.sort(dataFields);
         }
 
     }
