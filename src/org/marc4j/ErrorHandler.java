@@ -82,11 +82,11 @@ public class ErrorHandler {
     private int maxSeverity;
     
     public class Error {
-        protected String curRecordID;
-        protected String curField;
-        protected String curSubfield;
-        protected int severity;
-        protected String message;
+        public String curRecordID;
+        public String curField;
+        public String curSubfield;
+        public int severity;
+        public String message;
         
         protected Error(String recordID, String field, String subfield, int severity, String message)
         {
