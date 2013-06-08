@@ -23,44 +23,25 @@ package org.marc4j.samples;
 import java.io.InputStream;
 
 import org.marc4j.MarcReader;
-import org.marc4j.MarcStreamReader;
-import org.marc4j.marc.DataField;
 import org.marc4j.marc.Record;
-import org.marc4j.marc.Subfield;
 
 /**
- * Demonstrates getting the title without non-sorting characters.
+ * Reads personal names from a Tab-separated file.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class NonSortExample {
+public class PersonalNamesExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = DataFieldExample.class
-                .getResourceAsStream("resources/chabon.mrc");
+        InputStream input = PersonalNamesExample.class
+                .getResourceAsStream("names.txt");
 
-        MarcReader reader = new MarcStreamReader(input);
+        MarcReader reader = new PersonalNamesReader(input);
         while (reader.hasNext()) {
             Record record = reader.next();
-
-            // get data field 245
-            DataField dataField = (DataField) record.getVariableField("245");
-
-            // get indicator as int value
-            char ind2 = dataField.getIndicator2();
-
-            // get the title proper
-            Subfield subfield = dataField.getSubfield('a');
-            String title = subfield.getData();
-            System.out.println("Title proper: " + title);
-
-            // remove the non sorting characters
-            int nonSort = Character.digit(ind2, 10);
-            title = title.substring(nonSort);
-            System.out.println("Title non-sort (" + nonSort + "): " + title
-                    + '\n');
+            System.out.println(record.toString());
         }
 
     }

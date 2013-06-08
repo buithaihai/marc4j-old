@@ -20,42 +20,42 @@
  */
 package org.marc4j.samples;
 
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.List;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcWriter;
-import org.marc4j.MarcXmlWriter;
-import org.marc4j.converter.impl.AnselToUnicode;
+import org.marc4j.marc.DataField;
 import org.marc4j.marc.Record;
 
 /**
- * Writes MARC XML in UTF-8 to standard output.
+ * Demostrates the use of the find method.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc8ToMarcXmlExample {
+public class CheckAgencyExample {
 
     public static void main(String args[]) throws Exception {
 
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/brkrtest.mrc");
-
-        OutputStream out = new FileOutputStream("c:/temp/summerland.xml");
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
-        MarcWriter writer = new MarcXmlWriter(out, true);
-
-        AnselToUnicode converter = new AnselToUnicode();
-        writer.setConverter(converter);
-
         while (reader.hasNext()) {
             Record record = reader.next();
-            writer.write(record);
+
+            // check if the cataloging agency is DLC
+            List result = record.find("040", "DLC");
+            if (result.size() > 0)
+                System.out.println("Agency for this record is DLC");
+
+            // there is no specific find for a specific subfield
+            // so to check if it is the orignal cataloging agency
+            DataField field = (DataField) result.get(0);
+            String agency = field.getSubfield('a').getData();
+            if (agency.matches("DLC"))
+                System.out.println("DLC is the original agency");
         }
-        writer.close();
     }
 }

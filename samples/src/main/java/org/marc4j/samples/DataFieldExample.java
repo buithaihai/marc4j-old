@@ -41,7 +41,7 @@ public class DataFieldExample {
     public static void main(String args[]) throws Exception {
 
         InputStream input = DataFieldExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {

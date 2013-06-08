@@ -22,41 +22,26 @@ package org.marc4j.samples;
 
 import java.io.InputStream;
 
-import javax.xml.transform.dom.DOMResult;
-
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcXmlWriter;
-import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
-import org.w3c.dom.Document;
 
 /**
- * Writes MARC XML to a DOM document.
+ * Reads a single record.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc2DomExample {
+public class ReadSingleRecordExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+        InputStream input = ReadSingleRecordExample.class
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
-
-        DOMResult result = new DOMResult();
-        MarcXmlWriter writer = new MarcXmlWriter(result);
-        writer.setConverter(new AnselToUnicode());
-        while (reader.hasNext()) {
-            Record record = (Record) reader.next();
-            writer.write(record);
-        }
-        writer.close();
-
-        Document doc = (Document) result.getNode();
-        System.out.println(doc.getDocumentElement().getLocalName());
-
+        Record record = reader.next();
+        System.out.println(record.toString());
     }
+
 }

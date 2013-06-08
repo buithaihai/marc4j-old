@@ -22,41 +22,47 @@ package org.marc4j.samples;
 
 import java.io.InputStream;
 
+import javax.xml.transform.Source;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.stream.StreamSource;
+
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.marc.DataField;
-import org.marc4j.marc.MarcFactory;
+import org.marc4j.MarcXmlWriter;
+import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
+import org.w3c.dom.Document;
 
 /**
- * Reads MARC input.
+ * Writes MARC XML to a DOM document.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class AddLocationExample {
+public class Marc2ModsInDomExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = AddLocationExample.class
-                .getResourceAsStream("resources/summerland.mrc");
-
-        MarcFactory factory = MarcFactory.newInstance();
-
+        InputStream input = ReadMarcExample.class
+                .getResourceAsStream("summerland.mrc");
+        
         MarcReader reader = new MarcStreamReader(input);
+
+        String stylesheetUrl = "http://www.loc.gov/standards/mods/v3/MARC21slim2MODS3.xsl";
+        Source stylesheet = new StreamSource(stylesheetUrl);
+        
+        DOMResult result = new DOMResult();
+        MarcXmlWriter writer = new MarcXmlWriter(result, stylesheet);
+        writer.setConverter(new AnselToUnicode());
         while (reader.hasNext()) {
-            Record record = reader.next();
-
-            DataField field = factory.newDataField("856", '4', '2');
-            field.addSubfield(factory.newSubfield('3',
-                "Contributor biographical information"));
-            field.addSubfield(factory.newSubfield('u',
-                "http://en.wikipedia.org/wiki/Michael_Chabon"));
-            record.addVariableField(field);
-
-            System.out.println(record.toString());
+            Record record = (Record) reader.next();
+            writer.write(record);
         }
+        writer.close();
+
+        Document doc = (Document) result.getNode();
+        
+        System.out.println(doc.getDocumentElement().getLocalName());
 
     }
-
 }

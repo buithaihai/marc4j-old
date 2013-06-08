@@ -37,7 +37,7 @@ public class ReadMarcExample {
     public static void main(String args[]) throws Exception {
 
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {

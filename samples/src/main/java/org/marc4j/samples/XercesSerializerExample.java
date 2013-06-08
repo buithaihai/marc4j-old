@@ -23,10 +23,10 @@ package org.marc4j.samples;
 import java.io.InputStream;
 
 import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
+import javax.xml.transform.sax.SAXResult;
 
+// import org.apache.xml.serialize.OutputFormat;
+// import org.apache.xml.serialize.XMLSerializer;
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
 import org.marc4j.MarcXmlWriter;
@@ -34,30 +34,34 @@ import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
 
 /**
- * Writes MODS to standard output.
+ * Serializes XML using Xerces serializer.
+ * 
+ * <p>
+ * Commented out because Xerces is not a required library.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc2ModsExample {
+public class XercesSerializerExample {
 
     public static void main(String args[]) throws Exception {
 
-        String stylesheetUrl = "http://www.loc.gov/standards/mods/v3/MARC21slim2MODS3.xsl";
-        Source stylesheet = new StreamSource(stylesheetUrl);
-
-        Result result = new StreamResult(System.out);
-
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+                .getResourceAsStream("summerland.mrc");
         MarcReader reader = new MarcStreamReader(input);
 
-        MarcXmlWriter writer = new MarcXmlWriter(result, stylesheet);
-        writer.setConverter(new AnselToUnicode());
+        // OutputFormat format = new OutputFormat("xml", "UTF-8", true);
+
+        // XMLSerializer serializer = new XMLSerializer(System.out, format);
+        // Result result = new SAXResult(serializer.asContentHandler());
+
+        // MarcXmlWriter writer = new MarcXmlWriter(result);
+        // writer.setConverter(new AnselToUnicode());
         while (reader.hasNext()) {
-            Record record = (Record) reader.next();
-            writer.write(record);
+            Record record = reader.next();
+            // writer.write(record);
         }
-        writer.close();
+        // writer.close();
+
     }
 }

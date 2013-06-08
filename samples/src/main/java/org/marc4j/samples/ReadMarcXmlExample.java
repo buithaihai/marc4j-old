@@ -23,22 +23,23 @@ package org.marc4j.samples;
 import java.io.InputStream;
 
 import org.marc4j.MarcReader;
+import org.marc4j.MarcXmlReader;
 import org.marc4j.marc.Record;
 
 /**
- * Reads personal names from a Tab-separated file.
+ * Reads MARC XML input.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class PersonalNamesExample {
+public class ReadMarcXmlExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = PersonalNamesExample.class
-                .getResourceAsStream("resources/names.txt");
+        InputStream input = ReadMarcExample.class
+                .getResourceAsStream("summerland.xml");
 
-        MarcReader reader = new PersonalNamesReader(input);
+        MarcReader reader = new MarcXmlReader(input);
         while (reader.hasNext()) {
             Record record = reader.next();
             System.out.println(record.toString());

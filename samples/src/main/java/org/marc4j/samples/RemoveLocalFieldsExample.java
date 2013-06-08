@@ -21,47 +21,48 @@
 package org.marc4j.samples;
 
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.xml.transform.Result;
-import javax.xml.transform.sax.SAXResult;
-
-// import org.apache.xml.serialize.OutputFormat;
-// import org.apache.xml.serialize.XMLSerializer;
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcXmlWriter;
-import org.marc4j.converter.impl.AnselToUnicode;
+import org.marc4j.marc.DataField;
 import org.marc4j.marc.Record;
 
 /**
- * Serializes XML using Xerces serializer.
- * 
- * <p>
- * Commented out because Xerces is not a required library.
+ * Removes local field (tag 9XX).
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class XercesSerializerExample {
+public class RemoveLocalFieldsExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+        InputStream input = RemoveLocalFieldsExample.class
+                .getResourceAsStream("chabon-loc.mrc");
+
         MarcReader reader = new MarcStreamReader(input);
-
-        // OutputFormat format = new OutputFormat("xml", "UTF-8", true);
-
-        // XMLSerializer serializer = new XMLSerializer(System.out, format);
-        // Result result = new SAXResult(serializer.asContentHandler());
-
-        // MarcXmlWriter writer = new MarcXmlWriter(result);
-        // writer.setConverter(new AnselToUnicode());
         while (reader.hasNext()) {
             Record record = reader.next();
-            // writer.write(record);
+            System.out.println(record.toString());
+
+            Pattern pattern = Pattern.compile("9\\d\\d");
+
+            List fields = record.getDataFields();
+
+            Iterator i = fields.iterator();
+            while (i.hasNext()) {
+                DataField field = (DataField) i.next();
+                Matcher matcher = pattern.matcher(field.getTag());
+                if (matcher.matches())
+                    i.remove();
+            }
+            System.out.println(record.toString());
         }
-        // writer.close();
 
     }
+
 }

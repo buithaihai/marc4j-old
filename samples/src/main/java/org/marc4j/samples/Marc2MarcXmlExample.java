@@ -24,25 +24,30 @@ import java.io.InputStream;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcStreamWriter;
 import org.marc4j.MarcWriter;
+import org.marc4j.MarcXmlWriter;
+import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
 
 /**
- * Writes MARC to standard output.
+ * Writes MARc XML to standard output
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class WriteMarcExample {
+public class Marc2MarcXmlExample {
 
     public static void main(String args[]) throws Exception {
 
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
-        MarcWriter writer = new MarcStreamWriter(System.out);
+        MarcWriter writer = new MarcXmlWriter(System.out, true);
+
+        AnselToUnicode converter = new AnselToUnicode();
+        writer.setConverter(converter);
+
         while (reader.hasNext()) {
             Record record = reader.next();
             writer.write(record);

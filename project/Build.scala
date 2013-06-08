@@ -15,6 +15,13 @@ object Marc4jBuild extends Build {
     )
   )
 
+  lazy val marc4jSamples = Project(
+    id = "marc4j-samples",
+    base = file("samples"),
+    dependencies = Seq(marc4jCore),
+    settings = commonSettings
+  )
+
   def commonSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.marc4j",
     version := "3.0.0-SNAPSHOT",

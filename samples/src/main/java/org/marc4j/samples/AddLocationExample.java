@@ -24,37 +24,39 @@ import java.io.InputStream;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.marc.ControlField;
+import org.marc4j.marc.DataField;
+import org.marc4j.marc.MarcFactory;
 import org.marc4j.marc.Record;
 
 /**
- * Read the language code from a 008 control field.
+ * Reads MARC input.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class ControlFieldExample {
+public class AddLocationExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/chabon.mrc");
+        InputStream input = AddLocationExample.class
+                .getResourceAsStream("summerland.mrc");
+
+        MarcFactory factory = MarcFactory.newInstance();
 
         MarcReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
             Record record = reader.next();
-            
-            // get control field with tag 008
-            ControlField controlField = (ControlField) record
-                    .getVariableField("008");
-            
-            String data = controlField.getData();
 
-            // the three-character MARC language code takes character
-            // positions 35-37
-            String lang = data.substring(35, 38);
-            System.out.println("Language code (008 35-37): " + lang);
+            DataField field = factory.newDataField("856", '4', '2');
+            field.addSubfield(factory.newSubfield('3',
+                "Contributor biographical information"));
+            field.addSubfield(factory.newSubfield('u',
+                "http://en.wikipedia.org/wiki/Michael_Chabon"));
+            record.addVariableField(field);
+
+            System.out.println(record.toString());
         }
 
     }
+
 }

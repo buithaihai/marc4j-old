@@ -21,48 +21,32 @@
 package org.marc4j.samples;
 
 import java.io.InputStream;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.marc.DataField;
+import org.marc4j.MarcStreamWriter;
+import org.marc4j.MarcWriter;
 import org.marc4j.marc.Record;
 
 /**
- * Removes local field (tag 9XX).
+ * Writes MARC to standard output.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class RemoveLocalFieldsExample {
+public class WriteMarcExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = RemoveLocalFieldsExample.class
-                .getResourceAsStream("resources/chabon-loc.mrc");
+        InputStream input = ReadMarcExample.class
+                .getResourceAsStream("summerland.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
+        MarcWriter writer = new MarcStreamWriter(System.out);
         while (reader.hasNext()) {
             Record record = reader.next();
-            System.out.println(record.toString());
-
-            Pattern pattern = Pattern.compile("9\\d\\d");
-
-            List fields = record.getDataFields();
-
-            Iterator i = fields.iterator();
-            while (i.hasNext()) {
-                DataField field = (DataField) i.next();
-                Matcher matcher = pattern.matcher(field.getTag());
-                if (matcher.matches())
-                    i.remove();
-            }
-            System.out.println(record.toString());
+            writer.write(record);
         }
-
+        writer.close();
     }
-
 }

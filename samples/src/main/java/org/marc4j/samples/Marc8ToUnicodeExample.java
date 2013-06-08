@@ -22,47 +22,36 @@ package org.marc4j.samples;
 
 import java.io.InputStream;
 
-import javax.xml.transform.Source;
-import javax.xml.transform.dom.DOMResult;
-import javax.xml.transform.stream.StreamSource;
-
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcXmlWriter;
+import org.marc4j.MarcStreamWriter;
+import org.marc4j.MarcWriter;
 import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
-import org.w3c.dom.Document;
 
 /**
- * Writes MARC XML to a DOM document.
+ * Writes MARC ISO 2709 in UTF-8 to standard output.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc2ModsInDomExample {
+public class Marc8ToUnicodeExample {
 
     public static void main(String args[]) throws Exception {
 
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
-        
-        MarcReader reader = new MarcStreamReader(input);
+                .getResourceAsStream("brkrtest.mrc");
 
-        String stylesheetUrl = "http://www.loc.gov/standards/mods/v3/MARC21slim2MODS3.xsl";
-        Source stylesheet = new StreamSource(stylesheetUrl);
-        
-        DOMResult result = new DOMResult();
-        MarcXmlWriter writer = new MarcXmlWriter(result, stylesheet);
-        writer.setConverter(new AnselToUnicode());
+        MarcReader reader = new MarcStreamReader(input);
+        MarcWriter writer = new MarcStreamWriter(System.out, "UTF8");
+
+        AnselToUnicode converter = new AnselToUnicode();
+        writer.setConverter(converter);
+
         while (reader.hasNext()) {
-            Record record = (Record) reader.next();
+            Record record = reader.next();
             writer.write(record);
         }
         writer.close();
-
-        Document doc = (Document) result.getNode();
-        
-        System.out.println(doc.getDocumentElement().getLocalName());
-
     }
 }

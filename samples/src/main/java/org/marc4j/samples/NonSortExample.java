@@ -24,34 +24,45 @@ import java.io.InputStream;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcWriter;
-import org.marc4j.MarcXmlWriter;
-import org.marc4j.converter.impl.AnselToUnicode;
+import org.marc4j.marc.DataField;
 import org.marc4j.marc.Record;
+import org.marc4j.marc.Subfield;
 
 /**
- * Writes MARc XML to standard output
+ * Demonstrates getting the title without non-sorting characters.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc2MarcXmlExample {
+public class NonSortExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+        InputStream input = DataFieldExample.class
+                .getResourceAsStream("chabon.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
-        MarcWriter writer = new MarcXmlWriter(System.out, true);
-
-        AnselToUnicode converter = new AnselToUnicode();
-        writer.setConverter(converter);
-
         while (reader.hasNext()) {
             Record record = reader.next();
-            writer.write(record);
+
+            // get data field 245
+            DataField dataField = (DataField) record.getVariableField("245");
+
+            // get indicator as int value
+            char ind2 = dataField.getIndicator2();
+
+            // get the title proper
+            Subfield subfield = dataField.getSubfield('a');
+            String title = subfield.getData();
+            System.out.println("Title proper: " + title);
+
+            // remove the non sorting characters
+            int nonSort = Character.digit(ind2, 10);
+            title = title.substring(nonSort);
+            System.out.println("Title non-sort (" + nonSort + "): " + title
+                    + '\n');
         }
-        writer.close();
+
     }
+
 }

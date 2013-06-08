@@ -24,34 +24,37 @@ import java.io.InputStream;
 
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
-import org.marc4j.MarcStreamWriter;
-import org.marc4j.MarcWriter;
-import org.marc4j.converter.impl.AnselToUnicode;
+import org.marc4j.marc.ControlField;
 import org.marc4j.marc.Record;
 
 /**
- * Writes MARC ISO 2709 in UTF-8 to standard output.
+ * Read the language code from a 008 control field.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class Marc8ToUnicodeExample {
+public class ControlFieldExample {
 
     public static void main(String args[]) throws Exception {
 
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/brkrtest.mrc");
+                .getResourceAsStream("chabon.mrc");
 
         MarcReader reader = new MarcStreamReader(input);
-        MarcWriter writer = new MarcStreamWriter(System.out, "UTF8");
-
-        AnselToUnicode converter = new AnselToUnicode();
-        writer.setConverter(converter);
-
         while (reader.hasNext()) {
             Record record = reader.next();
-            writer.write(record);
+            
+            // get control field with tag 008
+            ControlField controlField = (ControlField) record
+                    .getVariableField("008");
+            
+            String data = controlField.getData();
+
+            // the three-character MARC language code takes character
+            // positions 35-37
+            String lang = data.substring(35, 38);
+            System.out.println("Language code (008 35-37): " + lang);
         }
-        writer.close();
+
     }
 }

@@ -24,7 +24,7 @@ public class TagAnalysisExample {
     public static void main(String args[]) throws Exception {
 
         InputStream input = AddLocationExample.class
-                .getResourceAsStream("resources/chabon.mrc");
+                .getResourceAsStream("chabon.mrc");
 
         Hashtable table = new Hashtable();
 

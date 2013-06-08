@@ -22,29 +22,42 @@ package org.marc4j.samples;
 
 import java.io.InputStream;
 
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
 import org.marc4j.MarcReader;
-import org.marc4j.MarcXmlReader;
+import org.marc4j.MarcStreamReader;
+import org.marc4j.MarcXmlWriter;
+import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
 
 /**
- * Reads MARC XML input.
+ * Writes MODS to standard output.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class ReadMarcXmlExample {
+public class Marc2ModsExample {
 
     public static void main(String args[]) throws Exception {
 
+        String stylesheetUrl = "http://www.loc.gov/standards/mods/v3/MARC21slim2MODS3.xsl";
+        Source stylesheet = new StreamSource(stylesheetUrl);
+
+        Result result = new StreamResult(System.out);
+
         InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.xml");
+                .getResourceAsStream("summerland.mrc");
+        MarcReader reader = new MarcStreamReader(input);
 
-        MarcReader reader = new MarcXmlReader(input);
+        MarcXmlWriter writer = new MarcXmlWriter(result, stylesheet);
+        writer.setConverter(new AnselToUnicode());
         while (reader.hasNext()) {
-            Record record = reader.next();
-            System.out.println(record.toString());
+            Record record = (Record) reader.next();
+            writer.write(record);
         }
-
+        writer.close();
     }
-
 }

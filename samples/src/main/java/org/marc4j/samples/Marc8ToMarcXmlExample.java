@@ -20,38 +20,42 @@
  */
 package org.marc4j.samples;
 
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
-import org.marc4j.MarcException;
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
+import org.marc4j.MarcWriter;
+import org.marc4j.MarcXmlWriter;
+import org.marc4j.converter.impl.AnselToUnicode;
 import org.marc4j.marc.Record;
 
 /**
- * Reads MARC input.
+ * Writes MARC XML in UTF-8 to standard output.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class HandleExceptionExample {
+public class Marc8ToMarcXmlExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = HandleExceptionExample.class
-                .getResourceAsStream("resources/error.mrc");
+        InputStream input = ReadMarcExample.class
+                .getResourceAsStream("brkrtest.mrc");
 
-        try {
-            MarcReader reader = new MarcStreamReader(input);
-            while (reader.hasNext()) {
-                Record record = reader.next();
-                System.out.println(record.toString());
-            }
-        } catch (MarcException e) {
-            System.out.println("something went wrong man!");
+        OutputStream out = new FileOutputStream("c:/temp/summerland.xml");
 
+        MarcReader reader = new MarcStreamReader(input);
+        MarcWriter writer = new MarcXmlWriter(out, true);
+
+        AnselToUnicode converter = new AnselToUnicode();
+        writer.setConverter(converter);
+
+        while (reader.hasNext()) {
+            Record record = reader.next();
+            writer.write(record);
         }
-
-        System.out.println("damn!");
+        writer.close();
     }
-
 }

@@ -21,41 +21,32 @@
 package org.marc4j.samples;
 
 import java.io.InputStream;
-import java.util.List;
 
 import org.marc4j.MarcReader;
-import org.marc4j.MarcStreamReader;
-import org.marc4j.marc.DataField;
+import org.marc4j.MarcXmlReader;
 import org.marc4j.marc.Record;
 
 /**
- * Demostrates the use of the find method.
+ * Writes MARC from MODS to standard output.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class CheckAgencyExample {
+public class ModsToMarc21lExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadMarcExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+        InputStream input = ModsToMarc21lExample.class
+                .getResourceAsStream("modsoutput.xml");
 
-        MarcReader reader = new MarcStreamReader(input);
+        MarcReader reader = new MarcXmlReader(input,
+                "http://www.loc.gov/standards/marcxml/xslt/MODS2MARC21slim.xsl");
+
         while (reader.hasNext()) {
             Record record = reader.next();
+            System.out.println(record.toString());
 
-            // check if the cataloging agency is DLC
-            List result = record.find("040", "DLC");
-            if (result.size() > 0)
-                System.out.println("Agency for this record is DLC");
-
-            // there is no specific find for a specific subfield
-            // so to check if it is the orignal cataloging agency
-            DataField field = (DataField) result.get(0);
-            String agency = field.getSubfield('a').getData();
-            if (agency.matches("DLC"))
-                System.out.println("DLC is the original agency");
         }
     }
+
 }

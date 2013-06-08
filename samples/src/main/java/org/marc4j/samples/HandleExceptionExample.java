@@ -22,26 +22,36 @@ package org.marc4j.samples;
 
 import java.io.InputStream;
 
+import org.marc4j.MarcException;
 import org.marc4j.MarcReader;
 import org.marc4j.MarcStreamReader;
 import org.marc4j.marc.Record;
 
 /**
- * Reads a single record.
+ * Reads MARC input.
  * 
  * @author Bas Peters
  * @version $Revision$
  */
-public class ReadSingleRecordExample {
+public class HandleExceptionExample {
 
     public static void main(String args[]) throws Exception {
 
-        InputStream input = ReadSingleRecordExample.class
-                .getResourceAsStream("resources/summerland.mrc");
+        InputStream input = HandleExceptionExample.class
+                .getResourceAsStream("error.mrc");
 
-        MarcReader reader = new MarcStreamReader(input);
-        Record record = reader.next();
-        System.out.println(record.toString());
+        try {
+            MarcReader reader = new MarcStreamReader(input);
+            while (reader.hasNext()) {
+                Record record = reader.next();
+                System.out.println(record.toString());
+            }
+        } catch (MarcException e) {
+            System.out.println("something went wrong man!");
+
+        }
+
+        System.out.println("damn!");
     }
 
 }

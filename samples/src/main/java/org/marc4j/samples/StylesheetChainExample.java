@@ -61,7 +61,7 @@ public class StylesheetChainExample {
 
             // create the input stream
             InputStream input = ReadMarcExample.class
-                    .getResourceAsStream("resources/summerland.mrc");
+                    .getResourceAsStream("summerland.mrc");
 
             // parse the input
             MarcReader reader = new MarcStreamReader(input);
