@@ -53,7 +53,7 @@ public class CodeTableGenerator extends CodeTable {
 
     public static void main(String args[])
     {
-    	CodeTableGenerator ct = new CodeTableGenerator(CodeTable.class.getResourceAsStream("resources/codetables.xml"));
+    	CodeTableGenerator ct = new CodeTableGenerator(CodeTable.class.getResourceAsStream("codetables.xml"));
         ct.dumpTableAsSwitchStatement(System.out);
     }
 

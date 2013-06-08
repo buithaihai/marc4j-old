@@ -42,7 +42,7 @@ public class ReverseCodeTableGenerator
           XMLReader rdr = saxParser.getXMLReader();
           
           InputSource src = new InputSource(ReverseCodeTableHandler.class
-                                            .getResourceAsStream("resources/codetables.xml"));
+                                            .getResourceAsStream("codetables.xml"));
 
           ReverseCodeTableHandler saxUms = new ReverseCodeTableHandler();
 
