@@ -105,7 +105,7 @@ public class UnicodeToAnsel extends CharConverter {
         catch (Exception e)
         {
             ReverseCodeTable rct;
-            rct = new ReverseCodeTableHash(AnselToUnicode.class.getResourceAsStream("resources/codetables.xml"));                
+            rct = new ReverseCodeTableHash(AnselToUnicode.class.getResourceAsStream("codetables.xml"));                
             return(rct);
         }
     }

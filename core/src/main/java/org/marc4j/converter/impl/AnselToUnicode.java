@@ -166,11 +166,11 @@ public class AnselToUnicode extends CharConverter {
             CodeTableInterface ct;
             if (loadMultibyte)
             {
-                ct = new CodeTable(AnselToUnicode.class.getResourceAsStream("resources/codetables.xml"));                
+                ct = new CodeTable(AnselToUnicode.class.getResourceAsStream("codetables.xml"));                
             }
             else
             {
-                ct = new CodeTable(AnselToUnicode.class.getResourceAsStream("resources/codetablesnocjk.xml"));
+                ct = new CodeTable(AnselToUnicode.class.getResourceAsStream("codetablesnocjk.xml"));
             }
             loadedMultibyte = loadMultibyte;
             return(ct);
@@ -212,7 +212,7 @@ public class AnselToUnicode extends CharConverter {
      */
     private void loadMultibyte() {
         ct = new CodeTable(getClass().getResourceAsStream(
-                "resources/codetables.xml"));
+                "codetables.xml"));
     }
 
     private void checkMode(char[] data, CodeTracker cdt) {
