@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -20,7 +20,7 @@ public class WriterTest extends TestCase {
 
     public void testMarcStreamWriter() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.xml");
+                "summerland.xml");
         MarcStreamWriter writer = new MarcStreamWriter(System.out);
         MarcXmlReader reader = new MarcXmlReader(input);
         while (reader.hasNext()) {
@@ -33,7 +33,7 @@ public class WriterTest extends TestCase {
 
     public void testMarcXmlWriter() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcXmlWriter writer = new MarcXmlWriter(System.out, true);
         MarcStreamReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
@@ -46,7 +46,7 @@ public class WriterTest extends TestCase {
     
     public void testMarcXmlWriterNormalized() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcXmlWriter writer = new MarcXmlWriter(System.out, true);
         writer.setUnicodeNormalization(true);
         MarcStreamReader reader = new MarcStreamReader(input);
@@ -60,7 +60,7 @@ public class WriterTest extends TestCase {
 
     public void testWriteAndRead() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.xml");
+                "summerland.xml");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         MarcStreamWriter writer = new MarcStreamWriter(out);
         MarcXmlReader reader = new MarcXmlReader(input);

@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.InputStream;
 
@@ -23,7 +23,7 @@ public class PermissiveReaderTest extends TestCase {
     public void testBadLeaderBytes10_11() throws Exception {
         int i = 0;
         InputStream input = getClass().getResourceAsStream(
-        "resources/bad_leaders_10_11.mrc");
+        "bad_leaders_10_11.mrc");
         MarcReader reader = new MarcPermissiveStreamReader(input, true, true);
         while (reader.hasNext()) {
             Record record = reader.next();
@@ -38,7 +38,7 @@ public class PermissiveReaderTest extends TestCase {
     
     public void testTooLongMarcRecord() throws Exception {
        InputStream input = getClass().getResourceAsStream(
-        "resources/bad_too_long_plus_2.mrc");
+        "bad_too_long_plus_2.mrc");
        
   
        
@@ -64,7 +64,7 @@ public class PermissiveReaderTest extends TestCase {
     
     public void testTooLongLeaderByteRead() throws Exception {
        InputStream input = getClass().getResourceAsStream(
-        "resources/bad_too_long_plus_2.mrc");
+        "bad_too_long_plus_2.mrc");
        
        MarcReader reader = new MarcPermissiveStreamReader(input, true, true);
        

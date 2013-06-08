@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

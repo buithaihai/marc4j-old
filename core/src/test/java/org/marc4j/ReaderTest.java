@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.InputStream;
 
@@ -7,42 +7,42 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-import org.marc4j.MarcJsonReader;
-import org.marc4j.MarcReader;
+import org.marc4j.MarcStreamReader;
+import org.marc4j.MarcXmlReader;
 import org.marc4j.marc.Record;
 
-public class JsonReaderTest extends TestCase {
+public class ReaderTest extends TestCase {
 
-    public void testMarcInJsonReader() throws Exception {
+    public void testMarcStreamReader() throws Exception {
         int i = 0;
         InputStream input = getClass().getResourceAsStream(
-                "resources/marc-in-json.json");
-        MarcReader reader = new MarcJsonReader(input);
+                "chabon.mrc");
+        MarcStreamReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
             Record record = reader.next();
             System.err.println(record.toString());
             i++;
         }
         input.close();
-        assertEquals(1, i);
+        assertEquals(2, i);
     }
-    
-    public void testMarcJsonReader() throws Exception {
+
+    public void testMarcXmlReader() throws Exception {
         int i = 0;
         InputStream input = getClass().getResourceAsStream(
-                "resources/marc-json.json");
-        MarcReader reader = new MarcJsonReader(input);
+                "chabon.xml");
+        MarcXmlReader reader = new MarcXmlReader(input);
         while (reader.hasNext()) {
             Record record = reader.next();
             System.err.println(record.toString());
             i++;
         }
         input.close();
-        assertEquals(1, i);
+        assertEquals(2, i);
     }
 
 	public static Test suite() {
-	    return new TestSuite(JsonReaderTest.class);
+	    return new TestSuite(ReaderTest.class);
 	}
 	
 	public static void main(String args[]) {

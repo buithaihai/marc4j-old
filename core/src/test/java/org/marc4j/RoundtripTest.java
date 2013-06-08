@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,7 +21,7 @@ public class RoundtripTest extends TestCase {
         int counter = 0;
 
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
 
         MarcStreamReader reader = new MarcStreamReader(input);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -52,7 +52,7 @@ public class RoundtripTest extends TestCase {
 
     public void testWriteReadUtf8() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/brkrtest.mrc");
+                "brkrtest.mrc");
 
         int counter = 0;
 

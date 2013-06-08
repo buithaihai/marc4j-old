@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -21,7 +21,7 @@ public class JsonWriterTest extends TestCase {
 
     public void testMarcInJsonWriter() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcJsonWriter writer = new MarcJsonWriter(System.out, MarcJsonWriter.MARC_IN_JSON);
         MarcStreamReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
@@ -34,7 +34,7 @@ public class JsonWriterTest extends TestCase {
     
     public void testMarcInJsonWriterIndented() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcJsonWriter writer = new MarcJsonWriter(System.out, MarcJsonWriter.MARC_IN_JSON);
         writer.setIndent(true);
         MarcStreamReader reader = new MarcStreamReader(input);
@@ -48,7 +48,7 @@ public class JsonWriterTest extends TestCase {
 
     public void testMarcJsonWriter() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcJsonWriter writer = new MarcJsonWriter(System.out, MarcJsonWriter.MARC_JSON);
         MarcStreamReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
@@ -61,7 +61,7 @@ public class JsonWriterTest extends TestCase {
     
     public void testMarcJsonWriterIndented() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcJsonWriter writer = new MarcJsonWriter(System.out, MarcJsonWriter.MARC_JSON);
         writer.setIndent(true);
         MarcStreamReader reader = new MarcStreamReader(input);
@@ -75,7 +75,7 @@ public class JsonWriterTest extends TestCase {
 
     public void testJsonWriteAndRead() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/marc-in-json.json");
+                "marc-in-json.json");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         MarcJsonWriter writer = new MarcJsonWriter(out);
         MarcJsonReader reader = new MarcJsonReader(input);
@@ -102,7 +102,7 @@ public class JsonWriterTest extends TestCase {
 
     public void testJsonWriteAndRead2() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/marc-json.json");
+                "marc-json.json");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         MarcJsonWriter writer = new MarcJsonWriter(out, MarcJsonWriter.MARC_JSON);
         MarcJsonReader reader = new MarcJsonReader(input);

@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import java.io.InputStream;
 import java.util.List;
@@ -22,7 +22,7 @@ public class RecordTest extends TestCase {
 
     public void setUp() throws Exception {
         InputStream input = getClass().getResourceAsStream(
-                "resources/summerland.mrc");
+                "summerland.mrc");
         MarcReader reader = new MarcStreamReader(input);
         while (reader.hasNext()) {
             record = reader.next();

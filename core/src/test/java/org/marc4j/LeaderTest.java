@@ -1,4 +1,4 @@
-package org.marc4j.test;
+package org.marc4j;
 
 import org.marc4j.marc.Leader;
 import org.marc4j.marc.MarcFactory;
